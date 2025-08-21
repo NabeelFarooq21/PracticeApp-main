@@ -134,7 +134,9 @@ const CreateModel = ({ isVisible, onClose }) => {
               fontSize={18}
               fontWeight={600}
               letterSpacing={-0.3}
-              onPress={()=>{navigation.navigate('EmailLogin')}}
+               onPress={() => {
+                [navigation.navigate('EmailLogin'), onClose()];
+              }}
             />
           </View>
 

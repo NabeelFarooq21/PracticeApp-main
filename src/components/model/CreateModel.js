@@ -10,9 +10,8 @@ import FastImage from 'react-native-fast-image';
 import CustomButton from '../CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
-
 const CreateModel = ({ isVisible, onClose }) => {
-  const navigation=useNavigation();
+  const navigation = useNavigation();
   return (
     <Modal
       visible={isVisible}
@@ -32,15 +31,14 @@ const CreateModel = ({ isVisible, onClose }) => {
               />
             </View>
 
-            <TouchableOpacity onPress={onClose}>
-              <ImageFast
-                source={images.closeicon}
-                style={{
-                  width: 24,
-                  height: 24,
-                }}
-              />
-            </TouchableOpacity>
+            <ImageFast
+              onPress={onClose}
+              source={images.closeicon}
+              style={{
+                width: 24,
+                height: 24,
+              }}
+            />
           </View>
           <CustomHorizontalLine />
 
@@ -134,8 +132,9 @@ const CreateModel = ({ isVisible, onClose }) => {
               fontSize={18}
               fontWeight={600}
               letterSpacing={-0.3}
-              onPress={()=>{navigation.navigate('EmailLogin')}}
-
+              onPress={() => {
+                [navigation.navigate('EmailLogin'), onClose()];
+              }}
             />
           </View>
 
@@ -152,26 +151,26 @@ const CreateModel = ({ isVisible, onClose }) => {
             <View style={modalStyles.line2}></View>
           </View>
           <View style={modalStyles.loginbtn}>
-          <CustomButton
-            title={'Login'}
-            borderRadius={16}
-            color={'black'}
-            backgroundColor={'white'}
-            borderWidth={1}
-            borderColor={'#E1E4EA'}
-            fontSize={18}
-            fontWeight={600}
-            letterSpacing={-0.3}
-          />
-          <CustomText
-            label={'By continuing, you agree to our Terms &  Privacy Policy'}
-            fontSize={14}
-            fontWeight={400}
-            color={'black'}
-            textAlign={'center'}
-            marginTop={10}
-            letterSpacing={-0.3}
-          />
+            <CustomButton
+              title={'Login'}
+              borderRadius={16}
+              color={'black'}
+              backgroundColor={'white'}
+              borderWidth={1}
+              borderColor={'#E1E4EA'}
+              fontSize={18}
+              fontWeight={600}
+              letterSpacing={-0.3}
+            />
+            <CustomText
+              label={'By continuing, you agree to our Terms &  Privacy Policy'}
+              fontSize={14}
+              fontWeight={400}
+              color={'black'}
+              textAlign={'center'}
+              marginTop={10}
+              letterSpacing={-0.3}
+            />
           </View>
         </View>
       </View>
@@ -228,8 +227,8 @@ export const modalStyles = StyleSheet.create({
     marginRight: 20,
     marginLeft: 5,
   },
-  loginbtn:{
+  loginbtn: {
     paddingHorizontal: 20,
     marginTop: 10,
-  }
+  },
 });

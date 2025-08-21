@@ -107,42 +107,43 @@ const Onboarding = () => {
                 lineHeight={24}
                 marginTop={5}
               />
-              <View style={styles.indexBarContainer}>
-                {data.map((_, index) => (
-                  <View
-                    key={index}
-                    style={[
-                      styles.indexBar,
-                      {
-                        backgroundColor:
-                          index === currentIndex ? '#FF0000' : '#CCCCCC',
-                      },
-                    ]}
-                  />
-                ))}
-              </View>
-              <CustomButton
-                title={'Create Account'}
-                marginTop={25}
-                borderRadius={16}
-                onPress={() => setCreateVisible(true)} // 🔹 create modal open
-              />
-
-              <CustomButton
-                title={'Login'}
-                marginTop={10}
-                borderRadius={16}
-                color={'black'}
-                backgroundColor={'white'}
-                borderWidth={1}
-                borderColor={'#E1E4EA'}
-                onPress={() => setLoginVisible(true)} // 🔹 login modal open
-              />
             </View>
           </View>
         )}
         keyExtractor={item => item.id}
       />
+      <View style={styles.indexBarContainer}>
+        {data.map((_, index) => (
+          <View
+            key={index}
+            style={[
+              styles.indexBar,
+              {
+                backgroundColor: index === currentIndex ? '#FF0000' : '#CCCCCC',
+              },
+            ]}
+          />
+        ))}
+      </View>
+      <View style={styles.btns}>
+        <CustomButton
+          title={'Create Account'}
+          marginTop={25}
+          borderRadius={16}
+          onPress={() => setCreateVisible(true)} // 🔹 create modal open
+        />
+
+        <CustomButton
+          title={'Login'}
+          marginTop={10}
+          borderRadius={16}
+          color={'black'}
+          backgroundColor={'white'}
+          borderWidth={1}
+          borderColor={'#E1E4EA'}
+          onPress={() => setLoginVisible(true)} // 🔹 login modal open
+        />
+      </View>
 
       {/* 🔹 Models */}
       <CreateModel
@@ -189,6 +190,10 @@ const styles = StyleSheet.create({
   indexBarContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 20,
+    // marginTop: 20,
+  },
+  btns: {
+    paddingHorizontal: 20,
+    marginBottom: 45,
   },
 });
