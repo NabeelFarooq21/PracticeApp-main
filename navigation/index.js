@@ -5,6 +5,7 @@ import Splash from '../src/screens/Auth/Splash/Index';
 import EmailLogin from '../src/screens/Auth/EmailLogin/Index';
 import ForgetPass from '../src/screens/Auth/ForgetPass/Index';
 import VerifyOtp from '../src/screens/Auth/VerifyOtp/Index';
+import ResetPass from '../src/screens/Auth/ResetPass/Index';
 const Navigation = () => {
   return (
     <Stack.Navigator
@@ -18,6 +19,7 @@ const Navigation = () => {
       <Stack.Screen name="EmailLogin" component={EmailLogin}/>
       <Stack.Screen name="ForgetPass" component={ForgetPass}/>
       <Stack.Screen name='VerifyOtp' component={VerifyOtp}/>
+      <Stack.Screen name='ResetPass' component={ResetPass}/>
 
 
       

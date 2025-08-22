@@ -18,6 +18,8 @@ export const images = {
   eye: require('./eyeicon.png'),
   forgot: require('./forgetimg.png'),
   email: require('./Frame.png'),
+  reset: require('./resetpass.png'),
+  tick: require('./tickicon.png'),
 
 
  
