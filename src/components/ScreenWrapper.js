@@ -63,21 +63,29 @@ const ScreenWrapper = ({
         {headerUnScrollable()}
 
         {scrollEnabled ? (
-          <KeyboardAwareScrollView
-            nestedScrollEnabled={nestedScrollEnabled}
-            refreshControl={refreshControl}
-            style={[
-              styles.container,
-              {
-                backgroundColor,
-                paddingHorizontal,
-              },
-            ]}
-            keyboardShouldPersistTaps="handled"
-            showsVerticalScrollIndicator={false}
-          >
-            {children}
-          </KeyboardAwareScrollView>
+         <KeyboardAwareScrollView
+  nestedScrollEnabled={nestedScrollEnabled}
+  refreshControl={refreshControl}
+  style={[
+    styles.container,
+    {
+      backgroundColor,
+    },
+  ]}
+  contentContainerStyle={{
+    paddingHorizontal,     
+    flexGrow: 1,           
+  }}
+  enableOnAndroid={true}
+  extraScrollHeight={20}
+  keyboardOpeningTime={0}
+  keyboardShouldPersistTaps="handled"
+  showsVerticalScrollIndicator={false}
+>
+  {children}
+</KeyboardAwareScrollView>
+
+
         ) : (
           <View style={{ paddingHorizontal, flex: 1 }}>{children}</View>
         )}

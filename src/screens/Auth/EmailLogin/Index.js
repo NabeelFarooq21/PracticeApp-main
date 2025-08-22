@@ -16,11 +16,14 @@ const EmailLogin = () => {
   return (
     <ScreenWrapper
       backgroundColor={'white'}
-      scrollEnabled
-      
+      scrollEnabled={true}
       paddingHorizontal={0}
       
+      
+      
+
     >
+
       <TopBar title={'Email Login'} />
       <CustomHorizontalLine height={1} />
 
@@ -61,10 +64,8 @@ const EmailLogin = () => {
       <View
         style={{
           marginTop: 20,
-          // width: '100%',
-          // height: '240',
-          // backgroundColor: 'red',
           paddingHorizontal: 30,
+      
         }}
       >
         <CustomText
@@ -176,7 +177,7 @@ const EmailLogin = () => {
           fontSize={18}
           fontWeight={600}
           letterSpacing={-0.3}
-          marginTop={12}
+          marginTop={16}
         />
         <CustomButton
           title={'Continue with Google'}
@@ -191,7 +192,7 @@ const EmailLogin = () => {
           fontSize={18}
           fontWeight={600}
           letterSpacing={-0.3}
-          marginTop={12}
+          marginTop={16}
         />
 
         <View style={styles.lineContainer}>
@@ -217,7 +218,7 @@ const EmailLogin = () => {
           fontSize={18}
           fontWeight={600}
           letterSpacing={-0.3}
-          marginTop={12}
+          marginTop={16}
         />
       </View>
     </ScreenWrapper>
