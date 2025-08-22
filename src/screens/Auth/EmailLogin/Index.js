@@ -13,20 +13,20 @@ import CustomInput from '../../../components/CustomInput';
 import ScreenWrapper from '../../../components/ScreenWrapper';
 
 const EmailLogin = () => {
+  const navigation = useNavigation();
   return (
     <ScreenWrapper
       backgroundColor={'white'}
       scrollEnabled={true}
       paddingHorizontal={0}
-      
-      
-      
+      headerUnScrollable={() => (
+        <View>
+          <TopBar title={'Email Login'} />
 
+          <CustomHorizontalLine height={1} />
+        </View>
+      )}
     >
-
-      <TopBar title={'Email Login'} />
-      <CustomHorizontalLine height={1} />
-
       <FastImage
         backgroundColor={'white'}
         source={images.logomain}
@@ -65,7 +65,6 @@ const EmailLogin = () => {
         style={{
           marginTop: 20,
           paddingHorizontal: 30,
-      
         }}
       >
         <CustomText
@@ -77,7 +76,7 @@ const EmailLogin = () => {
           label={'Email Address'}
         />
         <CustomInput
-          placeholder={'Email Address'}
+          placeholder={'jhsdf@gmail.com'}
           iconImage={images.email}
           placeholderTextColor={'#525866'}
           borderRadius={12}
@@ -118,6 +117,7 @@ const EmailLogin = () => {
             fontSize={14}
             fontWeight={400}
             letterSpacing={-0.6}
+            onPress={() => navigation.navigate('ForgetPass')}
           />
         </View>
         <CustomInput
