@@ -7,8 +7,11 @@ import ImageFast from '../../../components/ImageFast';
 import { images } from '../../../assets/Index';
 import CustomText from '../../../components/CustomText';
 import CustomInput from '../../../components/CustomInput';
+import { useNavigation } from '@react-navigation/native';
+import CustomButton from '../../../components/CustomButton';
 
 const ResetPass = () => {
+   const navigation = useNavigation();
   const [password, setPassword] = useState('');
 
   const hasUpperCase = /[A-Z]/.test(password);
@@ -17,9 +20,8 @@ const ResetPass = () => {
 
   // ✅ count kitni conditions pass hui
   const passedConditions =
-    (hasUpperCase ? 1 : 0) +
-    (hasNumber ? 1 : 0) +
-    (hasLength ? 1 : 0);
+    (hasUpperCase ? 1 : 0) + (hasNumber ? 1 : 0) + (hasLength ? 1 : 0);
+   
 
   return (
     <ScreenWrapper
@@ -199,6 +201,18 @@ const ResetPass = () => {
             tintColor: hasLength ? 'green' : '#525866',
           }}
           label={'At least 8 characters'}
+        />
+        <CustomButton
+          title={'Reset Password'}
+          marginTop={110}
+          letterSpacing={-0.3}
+          borderRadius={16}
+          color={'white'}
+          fontSize={18}
+          fontWeight={600}
+          textAlign={'center'}
+          backgroundColor={'#0E121B'}
+          onPress={() => navigation.navigate('EmailLogin')}
         />
       </View>
     </ScreenWrapper>
