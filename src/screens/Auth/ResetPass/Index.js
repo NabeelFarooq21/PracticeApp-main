@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React, { useState } from 'react';
+import React from 'react';
 import ScreenWrapper from '../../../components/ScreenWrapper';
 import TopBar from '../../../components/auth/TopBar';
 import CustomHorizontalLine from '../../../components/CustomHorizontalLine';
@@ -11,14 +11,6 @@ import CustomInput from '../../../components/CustomInput';
 import { useNavigation } from '@react-navigation/native';
 
 const ResetPass = () => {
-  const [password, setPassword] = useState('');
-  const [confirm, setConfirm] = useState('');
-
-  // Password Rules
-  const hasUppercase = /[A-Z]/.test(password);
-  const hasNumber = /\d/.test(password);
-  const hasMinLength = password.length >= 8;
-
   return (
     <ScreenWrapper
       paddingHorizontal={0}
@@ -31,7 +23,9 @@ const ResetPass = () => {
         </View>
       )}
     >
-      <ImageFast
+     
+
+     <ImageFast
         source={images.reset}
         style={{
           height: 96,
@@ -41,7 +35,6 @@ const ResetPass = () => {
           marginTop: 50,
         }}
       />
-
       <CustomText
         label={'Create a new password'}
         fontSize={24}
@@ -66,9 +59,7 @@ const ResetPass = () => {
         height={24}
         alignSelf={'center'}
       />
-
       <View style={{ paddingHorizontal: 30, marginTop: 20 }}>
-        {/* New Password */}
         <CustomText
           fontSize={14}
           fontWeight={400}
@@ -94,11 +85,8 @@ const ResetPass = () => {
           }}
           rightIcon={images.eye}
           secureTextEntry={true}
-          value={password}
-          onChangeText={(text) => setPassword(text)}
         />
 
-        {/* Confirm Password */}
         <CustomText
           fontSize={14}
           fontWeight={400}
@@ -123,36 +111,15 @@ const ResetPass = () => {
             tintColor: 'black',
             marginRight: 8,
           }}
-          rightIcon={images.eye}
-          secureTextEntry={true}
-          value={confirm}
-          onChangeText={(text) => setConfirm(text)}
+          rightIcon={images.eye} 
+          secureTextEntry={true} 
         />
-
-        {/* Strength Bars */}
         <View style={styles.barcontainer}>
-          <View
-            style={[
-              styles.bar,
-              { backgroundColor: hasUppercase ? 'green' : '#E1E4EA' },
-            ]}
-          />
-          <View
-            style={[
-              styles.bar,
-              { backgroundColor: hasNumber ? 'green' : '#E1E4EA' },
-            ]}
-          />
-          <View
-            style={[
-              styles.bar,
-              { backgroundColor: hasMinLength ? 'green' : '#E1E4EA' },
-            ]}
-          />
+          <View style={styles.bar}></View>
+          <View style={styles.bar}></View>
+          <View style={styles.bar}></View>
         </View>
       </View>
-
-      {/* Password Rules */}
       <View style={styles.content}>
         <CustomText
           fontSize={14}
@@ -160,53 +127,45 @@ const ResetPass = () => {
           color={'#525866'}
           letterSpacing={-0.6}
           marginBottom={8}
-          label={'Must Contain at least;'}
-        />
-
-        <CustomText
+          label={'Must Contain at least;'}/>
+          <CustomText
           fontSize={14}
           fontWeight={400}
-          color={hasUppercase ? 'green' : '#525866'}
+          color={'#525866'}
           letterSpacing={-0.6}
           iconImage={images.tick}
           iconImageStyle={{
             width: 16,
             height: 16,
             marginRight: 8,
-            tintColor: hasUppercase ? 'green' : '#525866',
           }}
-          label={'At least 1 uppercase '}
-        />
-
-        <CustomText
+        //   marginTop={12}
+          label={'At least 1 uppercase '}/>
+          <CustomText
           fontSize={14}
           fontWeight={400}
-          color={hasNumber ? 'green' : '#525866'}
+          color={'#525866'}
           letterSpacing={-0.6}
           iconImage={images.tick}
           iconImageStyle={{
             width: 16,
             height: 16,
             marginRight: 8,
-            tintColor: hasNumber ? 'green' : '#525866',
           }}
-          label={'At least 1 Number'}
-        />
-
-        <CustomText
+          label={'At least 1 Number'}/>
+          <CustomText
           fontSize={14}
           fontWeight={400}
-          color={hasMinLength ? 'green' : '#525866'}
+          color={'#525866'}
           letterSpacing={-0.6}
           iconImage={images.tick}
           iconImageStyle={{
             width: 16,
             height: 16,
             marginRight: 8,
-            tintColor: hasMinLength ? 'green' : '#525866',
           }}
-          label={'At least 8 characters'}
-        />
+          label={'At least 8 characters'}/>
+         
       </View>
     </ScreenWrapper>
   );
@@ -226,6 +185,7 @@ const styles = StyleSheet.create({
     height: 4,
     backgroundColor: '#E1E4EA',
     borderRadius: 1.2,
+    color: '#E1E4EA',
   },
   content: {
     flexDirection: 'column',

@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, Image } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import React from "react";
 
 const CustomText = ({
@@ -33,41 +33,27 @@ const CustomText = ({
   children,
   removeTranslation,
   disabled,
+  
   letterSpacing,
-  iconImage,
-  iconImageStyle,
 }) => {
   return (
     <TouchableOpacity
-      style={[
-        containerStyle,
-        { 
-          alignSelf,
-          flexDirection: iconImage ? "row" : "column", // ✅ only row if icon
-          alignItems: iconImage ? "center" : "flex-start", // ✅ fix alignment
-        }
-      ]}
+      style={[containerStyle, { alignSelf }]}
       onPress={onPress}
       disabled={!onPress || disabled}
       activeOpacity={activeOpacity || 0.6}
     >
-      {iconImage && (
-        <Image
-          source={iconImage}
-          style={[{ width: 16, height: 16, marginRight: 6 }, iconImageStyle]}
-          resizeMode="contain"
-        />
-      )}
       <Text
         numberOfLines={numberOfLines}
         style={[
           {
             fontSize: fontSize || 14,
-            color: color || "white",
+            color: color || 'white',
             marginTop: marginTop || 0,
             marginBottom: marginBottom || 0,
             marginLeft: marginLeft || 0,
             marginRight: marginRight || 0,
+            // fontFamily: fontFamily || fonts.regular,
             fontStyle: fontStyle,
             lineHeight: lineHeight,
             textAlign: textAlign,
@@ -76,7 +62,7 @@ const CustomText = ({
             bottom: bottom,
             borderBottomWidth: borderBottomWidth,
             borderColor: borderColor,
-            width: width || "100%",  // ✅ full width for proper textAlign
+            width: width,
             marginVertical: marginVertical,
             paddingBottom: paddingBottom,
             right: right,
@@ -87,11 +73,10 @@ const CustomText = ({
           textStyle,
         ]}
       >
-        {label}
+        { label }
         {children}
       </Text>
     </TouchableOpacity>
   );
 };
-
 export default CustomText;
