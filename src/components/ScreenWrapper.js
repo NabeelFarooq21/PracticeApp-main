@@ -72,10 +72,10 @@ const ScreenWrapper = ({
       backgroundColor,
     },
   ]}
-  contentContainerStyle={{
-    paddingHorizontal,     
-    flexGrow: 1,           
-  }}
+  // contentContainerStyle={{
+  //   paddingHorizontal,     
+  //   flexGrow: 1,           
+  // }}
   enableOnAndroid={true}
   extraScrollHeight={20}
   keyboardOpeningTime={0}
