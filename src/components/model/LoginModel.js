@@ -9,6 +9,7 @@ import CustomHorizontalLine from '../CustomHorizontalLine';
 import FastImage from 'react-native-fast-image';
 import CustomButton from '../CustomButton';
 import { useNavigation } from '@react-navigation/native';
+import CreateAcc from '../../screens/Auth/CreateAcc/Index';
 
 
 const CreateModel = ({ isVisible, onClose }) => {
@@ -163,6 +164,9 @@ const CreateModel = ({ isVisible, onClose }) => {
             fontSize={18}
             fontWeight={600}
             letterSpacing={-0.3}
+            onPress={()=>{
+              [navigation.navigate('CreateAcc'), onClose()];
+            }}
           />
           <CustomText
             label={'By continuing, you agree to our Terms &  Privacy Policy'}

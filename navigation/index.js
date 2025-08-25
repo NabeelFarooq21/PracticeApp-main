@@ -6,6 +6,7 @@ import EmailLogin from '../src/screens/Auth/EmailLogin/Index';
 import ForgetPass from '../src/screens/Auth/ForgetPass/Index';
 import VerifyOtp from '../src/screens/Auth/VerifyOtp/Index';
 import ResetPass from '../src/screens/Auth/ResetPass/Index';
+import CreateAcc from '../src/screens/Auth/CreateAcc/Index';
 const Navigation = () => {
   return (
     <Stack.Navigator
@@ -20,6 +21,7 @@ const Navigation = () => {
       <Stack.Screen name="ForgetPass" component={ForgetPass}/>
       <Stack.Screen name='VerifyOtp' component={VerifyOtp}/>
       <Stack.Screen name='ResetPass' component={ResetPass}/>
+      <Stack.Screen name='CreateAcc' component={CreateAcc}/>
 
 
       

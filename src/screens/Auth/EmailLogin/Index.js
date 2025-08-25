@@ -11,6 +11,7 @@ import CustomText from '../../../components/CustomText';
 import CustomInput from '../../../components/CustomInput';
 // import CustomInput from '../../../components/CustomInput';
 import ScreenWrapper from '../../../components/ScreenWrapper';
+import CreateAcc from '../CreateAcc/Index';
 
 const EmailLogin = () => {
   const navigation = useNavigation();
@@ -151,6 +152,7 @@ const EmailLogin = () => {
           fontWeight={600}
           marginTop={12}
           letterSpacing={-0.3}
+         
         />
         <View style={styles.lineContainer}>
           <View style={styles.line}></View>
@@ -219,6 +221,7 @@ const EmailLogin = () => {
           fontWeight={600}
           letterSpacing={-0.3}
           marginTop={16}
+           onPress={()=>navigation.navigate('CreateAcc')}
         />
       </View>
     </ScreenWrapper>

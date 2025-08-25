@@ -17,9 +17,11 @@ export const images = {
   lock: require('./lockicon.png'),
   eye: require('./eyeicon.png'),
   forgot: require('./forgetimg.png'),
-  email: require('./Frame.png'),
+  email: require('./mail.png'),
   reset: require('./resetpass.png'),
   tick: require('./tickicon.png'),
+  create: require('./createimh.png'),
+  personicon: require('./picon.png'),
 
 
  

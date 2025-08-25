@@ -9,7 +9,8 @@ import CustomText from '../../../components/CustomText';
 import CustomButton from '../../../components/CustomButton';
 import CustomInput from '../../../components/CustomInput';
 import { useNavigation } from '@react-navigation/native';
-
+import CreateAcc from '../CreateAcc/Index';
+  
 const ForgetPass = () => {
   const navigation = useNavigation();
   
@@ -129,6 +130,7 @@ const ForgetPass = () => {
           fontWeight={600}
           letterSpacing={-0.3}
           marginTop={16}
+           onPress={()=>navigation.navigate('CreateAcc')}
         />
         </View>
         </View>
