@@ -11,6 +11,7 @@ import CustomButton from '../../../components/CustomButton';
 import CustomInput from '../../../components/CustomInput';
 
 const CreateAcc = () => {
+    const navigation = useNavigation();
   return (
     <ScreenWrapper
       paddingHorizontal={0}
@@ -178,10 +179,7 @@ const CreateAcc = () => {
             />
 
              <CustomButton
-              title={'Continue with Email'}
-              icon={images.mlogo}
-              icnWidth={24}
-              icnHeight={24}
+              title={'Continue'}
               borderRadius={16}
               color={'white'}
               backgroundColor={'black'}
@@ -191,6 +189,9 @@ const CreateAcc = () => {
               fontWeight={600}
               letterSpacing={-0.3}
               marginTop={50}
+              onPress={()=>{
+                navigation.navigate('PhoneNum')
+              }}
              
             />
       </View>
