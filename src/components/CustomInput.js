@@ -22,6 +22,7 @@ const CustomInput = ({
   errorColor,
   backgroundColor,
   color,
+  
 
   // left icon props
   iconImage,

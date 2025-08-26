@@ -22,7 +22,8 @@ export const images = {
   tick: require('./tickicon.png'),
   create: require('./createimh.png'),
   personicon: require('./picon.png'),
-  phicon: require('./phoneicon.png')
+  phicon: require('./phoneicon.png'),
+  flag: require('./flag1.png')
 
 
  
