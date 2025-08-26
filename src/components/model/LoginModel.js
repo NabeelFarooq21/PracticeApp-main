@@ -52,7 +52,7 @@ const CreateModel = ({ isVisible, onClose }) => {
               width: 140,
               height: 64,
               alignSelf: 'center',
-              marginTop: 20,
+              marginTop: 30,
             }}
           />
           <CustomText
@@ -61,7 +61,7 @@ const CreateModel = ({ isVisible, onClose }) => {
             fontWeight={600}
             color={'black'}
             textAlign={'center'}
-            marginTop={15}
+            marginTop={20}
           />
           <View style={{ paddingHorizontal: 20 }}>
             <CustomText
@@ -143,14 +143,22 @@ const CreateModel = ({ isVisible, onClose }) => {
 
           <View style={modalStyles.lineContainer}>
             <View style={modalStyles.line}></View>
-            <CustomText
-              label={'Don’t Have an account?'}
-              fontSize={14}
-              fontWeight={400}
-              color={'black'}
-              textAlign={'center'}
-              letterSpacing={-0.3}
-            />
+           <TouchableOpacity
+  onPress={() => {
+    navigation.navigate('CreateAcc');
+    onClose();
+  }}
+>
+  <CustomText
+    label={'Don’t Have an account?'}
+    fontSize={14}
+    fontWeight={400}
+    color={'black'}
+    textAlign={'center'}
+    letterSpacing={-0.3}
+  />
+</TouchableOpacity>
+
             <View style={modalStyles.line2}></View>
           </View>
           <View style={modalStyles.loginbtn}>
@@ -174,7 +182,7 @@ const CreateModel = ({ isVisible, onClose }) => {
             fontWeight={400}
             color={'black'}
             textAlign={'center'}
-            marginTop={10}
+            marginTop={18}
             letterSpacing={-0.3}
           />
           </View>
@@ -197,7 +205,7 @@ export const modalStyles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingBottom: 20,
-    maxHeight: '88%',
+    height: '85%',
   },
   header: {
     flexDirection: 'row',
@@ -210,14 +218,14 @@ export const modalStyles = StyleSheet.create({
   buttons: {
     marginTop: 20,
     paddingHorizontal: 20,
-    gap: 8,
+    gap: 11,
   },
 
   lineContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    // marginBottom: 10,
-    marginTop: 18,
+    marginBottom: 5,
+    marginTop: 25,
   },
   line: {
     flex: 1,

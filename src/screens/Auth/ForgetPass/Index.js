@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,TouchableOpacity } from 'react-native';
 import React from 'react';
 import ScreenWrapper from '../../../components/ScreenWrapper';
 import TopBar from '../../../components/auth/TopBar';
@@ -108,14 +108,22 @@ const ForgetPass = () => {
 <View style={{paddingTop:220}}>
         <View style={styles.lineContainer}>
           <View style={styles.line}></View>
-          <CustomText
-            label={'Don’t have an account?'}
-            fontSize={14}
-            fontWeight={400}
-            color={'black'}
-            textAlign={'center'}
-            letterSpacing={-0.3}
-          />
+        <TouchableOpacity
+  onPress={() => {
+    navigation.navigate('CreateAcc');
+    
+  }}
+>
+  <CustomText
+    label={'Don’t Have an account?'}
+    fontSize={14}
+    fontWeight={400}
+    color={'black'}
+    textAlign={'center'}
+    letterSpacing={-0.3}
+  />
+</TouchableOpacity>
+
           <View style={styles.line2}></View>
         </View>
 

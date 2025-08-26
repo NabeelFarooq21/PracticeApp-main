@@ -4,6 +4,8 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   TextInput,
+  Platform,
+  TouchableOpacity,
 } from 'react-native';
 import React, { useState, useRef, useEffect } from 'react';
 import ScreenWrapper from '../../../components/ScreenWrapper';
@@ -20,6 +22,8 @@ const VerifyOtp = () => {
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
   const [isOtpComplete, setIsOtpComplete] = useState(false);
   const inputRefs = useRef([]);
+  const backspaceLongPressTimer = useRef(null);
+  const isProcessingInput = useRef(false); // To prevent race conditions
 
   // Check if all OTP fields are filled
   useEffect(() => {
@@ -28,40 +32,101 @@ const VerifyOtp = () => {
   }, [otp]);
 
   const handleOtpChange = (text, index) => {
+    // Prevent race conditions with fast typing
+    if (isProcessingInput.current) return;
+    isProcessingInput.current = true;
+    
     // Allow only numbers
-    if (!/^\d*$/.test(text)) return;
+    if (!/^\d*$/.test(text)) {
+      isProcessingInput.current = false;
+      return;
+    }
 
     const newOtp = [...otp];
+
+    // If user pasted multiple digits or typed quickly with multiple characters
+    if (text.length > 1) {
+      const chars = text.split('');
+      for (let i = 0; i < chars.length && index + i < 6; i++) {
+        newOtp[index + i] = chars[i];
+      }
+      setOtp(newOtp);
+
+      // Focus last filled box with a slight delay for smoothness
+      const nextIndex = Math.min(index + text.length, 5);
+      setTimeout(() => {
+        inputRefs.current[nextIndex]?.focus();
+        isProcessingInput.current = false;
+      }, 10);
+      return;
+    }
+
+    // Normal single digit
     newOtp[index] = text;
     setOtp(newOtp);
 
-    // Auto focus to next input
+    // Auto focus to next input with a slight delay for better UX
     if (text !== '' && index < 5) {
-      inputRefs.current[index + 1].focus();
-    }
-
-    // Auto submit if all fields are filled
-    if (text !== '' && index === 5) {
-      Keyboard.dismiss();
+      setTimeout(() => {
+        inputRefs.current[index + 1]?.focus();
+        isProcessingInput.current = false;
+      }, 10);
+    } else if (text !== '' && index === 5) {
+      // Auto dismiss if last filled
+      setTimeout(() => {
+        Keyboard.dismiss();
+        isProcessingInput.current = false;
+      }, 10);
+    } else {
+      isProcessingInput.current = false;
     }
   };
 
   const handleKeyPress = (e, index) => {
-    // Handle backspace
-    if (e.nativeEvent.key === 'Backspace' && otp[index] === '' && index > 0) {
-      inputRefs.current[index - 1].focus();
+    if (e.nativeEvent.key === 'Backspace') {
+      // Start timer for long press
+      backspaceLongPressTimer.current = setTimeout(() => {
+        clearAllOtpFields();
+      }, 500); // 500ms delay for long press
     }
+  };
+
+  const handleKeyRelease = (e, index) => {
+    if (e.nativeEvent.key === 'Backspace') {
+      // Clear the long press timer
+      if (backspaceLongPressTimer.current) {
+        clearTimeout(backspaceLongPressTimer.current);
+        backspaceLongPressTimer.current = null;
+      }
+      
+      // Handle normal backspace
+      if (otp[index] !== '') {
+        // Just clear current box
+        const newOtp = [...otp];
+        newOtp[index] = '';
+        setOtp(newOtp);
+      } else if (index > 0) {
+        // Go back and clear previous
+        inputRefs.current[index - 1]?.focus();
+        const newOtp = [...otp];
+        newOtp[index - 1] = '';
+        setOtp(newOtp);
+      }
+    }
+  };
+
+  const clearAllOtpFields = () => {
+    setOtp(['', '', '', '', '', '']);
+    inputRefs.current[0]?.focus();
   };
 
   const handleVerify = () => {
     const enteredOtp = otp.join('');
-    // Handle OTP verification logic here
     console.log('Entered OTP:', enteredOtp);
   };
 
-  // Function to set cursor to end when input is focused
+  // Set cursor to end for better UX
   const handleFocus = (index) => {
-    // Set timeout to ensure the cursor moves to the end after the component renders
     setTimeout(() => {
       if (inputRefs.current[index]) {
         inputRefs.current[index].setNativeProps({
@@ -69,6 +134,15 @@ const VerifyOtp = () => {
         });
       }
     }, 50);
+  };
+
+  // Handle text input for better cross-platform support
+  const handleTextInput = (event, index) => {
+    // This helps with fast typing on some Android devices
+    const text = event.nativeEvent.text;
+    if (text && text.length > 0) {
+      handleOtpChange(text, index);
+    }
   };
 
   return (
@@ -130,17 +204,21 @@ const VerifyOtp = () => {
                 value={digit}
                 onChangeText={text => handleOtpChange(text, index)}
                 onKeyPress={e => handleKeyPress(e, index)}
+                onKeyRelease={e => handleKeyRelease(e, index)}
                 onFocus={() => handleFocus(index)}
+                onTextInput={e => handleTextInput(e, index)}
                 keyboardType="numeric"
-                maxLength={1}
+                maxLength={6} // Allow pasting multiple digits
                 textAlign="center"
                 fontSize={20}
                 fontWeight="600"
-                selectionColor="#0E121B" // Custom cursor color
+                selectionColor="#0E121B"
+                caretHidden={false}
+                contextMenuHidden={true} // Disable context menu for better UX
+                selectTextOnFocus={Platform.OS === 'ios'} // Better iOS experience
               />
             ))}
           </View>
-
 
           <View style={styles.resendContainer}>
             <CustomText
@@ -149,7 +227,7 @@ const VerifyOtp = () => {
               fontWeight={400}
               color={'#525866'}
             />
-            <TouchableWithoutFeedback
+            <TouchableOpacity
               onPress={() => console.log('Resend code')}
             >
               <View>
@@ -164,22 +242,22 @@ const VerifyOtp = () => {
                   textDecorationLine={'underline'}
                 />
               </View>
-            </TouchableWithoutFeedback>
-            
-          <CustomButton
-            title={'Verify'}
-            borderRadius={16}
-            color={isOtpComplete ? 'white' : '#525866'}
-            backgroundColor={isOtpComplete ? 'black' : '#F5F7FA'}
-            borderWidth={1}
-            borderColor={isOtpComplete ? '#E1E4EA' : '#E1E4EA'}
-            fontSize={18}
-            fontWeight={600}
-            marginTop={16}
-            letterSpacing={-0.3}
-            onPress={()=>navigation.navigate('ResetPass')}
-            disabled={!isOtpComplete}
-          />
+            </TouchableOpacity>
+
+            <CustomButton
+              title={'Verify'}
+              borderRadius={16}
+              color={isOtpComplete ? 'white' : '#525866'}
+              backgroundColor={isOtpComplete ? 'black' : '#F5F7FA'}
+              borderWidth={1}
+              borderColor={isOtpComplete ? '#E1E4EA' : '#E1E4EA'}
+              fontSize={18}
+              fontWeight={600}
+              marginTop={16}
+              letterSpacing={-0.3}
+              onPress={() => navigation.navigate('ResetPass')}
+              disabled={!isOtpComplete}
+            />
           </View>
         </View>
       </ScreenWrapper>
@@ -192,7 +270,7 @@ export default VerifyOtp;
 const styles = StyleSheet.create({
   otpContainer: {
     flexDirection: 'row',
-    gap: 10,
+    justifyContent: 'space-between',
     marginTop: 40,
   },
   otpInput: {

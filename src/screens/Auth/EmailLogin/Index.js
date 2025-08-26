@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import TopBar from '../../../components/auth/TopBar';
@@ -199,14 +199,23 @@ const EmailLogin = () => {
 
         <View style={styles.lineContainer}>
           <View style={styles.line}></View>
-          <CustomText
-            label={'Don’t have an account?'}
-            fontSize={14}
-            fontWeight={400}
-            color={'black'}
-            textAlign={'center'}
-            letterSpacing={-0.3}
-          />
+
+          <TouchableOpacity
+  onPress={() => {
+    navigation.navigate('CreateAcc');
+    
+  }}
+>
+  <CustomText
+    label={'Don’t Have an account?'}
+    fontSize={14}
+    fontWeight={400}
+    color={'black'}
+    textAlign={'center'}
+    letterSpacing={-0.3}
+  />
+</TouchableOpacity>
+
           <View style={styles.line2}></View>
         </View>
 
