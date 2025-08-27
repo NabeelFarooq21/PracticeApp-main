@@ -146,7 +146,7 @@ const PhoneNum = () => {
           fontSize={16}
           fontFamily={600}
           marginBottom
-          onPress={() => navigation.navigate('VerifyOtp')}
+          onPress={() => navigation.navigate('VerifyNum')}
           disabled={phoneNumber.length === 0}
           style={[
             styles.getStartedButton,

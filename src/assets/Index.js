@@ -1,7 +1,7 @@
 export const images = {
   logosplash: require('./Logo.png'),
   splash: require('./gradient-loader.png'),
-  phone1: require('./Phone.png'),
+  phone1: require('./on1.png'),
   phone2: require('./Phone2.png'),
   phone3: require('./Phone3.png'),
   phone4: require('./Phone4.png'),
@@ -23,7 +23,9 @@ export const images = {
   create: require('./createimh.png'),
   personicon: require('./picon.png'),
   phicon: require('./phoneicon.png'),
-  flag: require('./flag1.png')
+  flag: require('./flag1.png'),
+  locatiomimg: require('./location.png'),
+  locationicon: require('./locaicon.png'),
 
 
  

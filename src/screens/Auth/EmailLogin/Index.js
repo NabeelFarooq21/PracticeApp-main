@@ -152,6 +152,7 @@ const EmailLogin = () => {
           fontWeight={600}
           marginTop={12}
           letterSpacing={-0.3}
+          onPress={() => navigation.navigate('LocationAccess')}
          
         />
         <View style={styles.lineContainer}>

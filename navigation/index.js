@@ -8,6 +8,8 @@ import VerifyOtp from '../src/screens/Auth/VerifyOtp/Index';
 import ResetPass from '../src/screens/Auth/ResetPass/Index';
 import CreateAcc from '../src/screens/Auth/CreateAcc/Index';
 import PhoneNum from '../src/screens/Auth/PhoneNum/Index';
+import LocationAccess from '../src/screens/Auth/LocationAccess/Index';
+import VerifyNum from '../src/screens/Auth/VerifyNum/Index';
 const Navigation = () => {
   return (
     <Stack.Navigator
@@ -24,6 +26,9 @@ const Navigation = () => {
       <Stack.Screen name='ResetPass' component={ResetPass}/>
       <Stack.Screen name='CreateAcc' component={CreateAcc}/>
       <Stack.Screen name='PhoneNum' component={PhoneNum}/>
+      <Stack.Screen name='VerifyNum' component={VerifyNum}/>
+      <Stack.Screen name='LocationAccess' component={LocationAccess}/>
+
 
 
       
