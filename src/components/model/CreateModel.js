@@ -1,191 +1,210 @@
-import { View, Text, Modal, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Modal,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import CustomText from '../CustomText';
-// import CustomButton from '../CustomButton';
 import ImageFast from '../ImageFast';
-import { images } from '../../assets/Index';
+import {images} from '../../assets/Index';
 import CustomHorizontalLine from '../CustomHorizontalLine';
 import FastImage from 'react-native-fast-image';
 import CustomButton from '../CustomButton';
-import { useNavigation } from '@react-navigation/native';
-import EmailLogin from '../../screens/Auth/EmailLogin/Index';
+import {useNavigation} from '@react-navigation/native';
 
-const CreateModel = ({ isVisible, onClose }) => {
+const CreateModel = ({isVisible, onClose}) => {
   const navigation = useNavigation();
   return (
     <Modal
       visible={isVisible}
-      animationType="none"
+      animationType="slide"
       transparent={true}
-      onRequestClose={onClose}
-    >
-      <View style={modalStyles.overlay}>
-        <View style={modalStyles.container}>
-          <View style={modalStyles.header}>
-            <View style={{ flex: 1, alignItems: 'center', marginLeft: 20 }}>
-              <CustomText
-                label={'Create Account'}
-                color={'black'}
+      onRequestClose={onClose}>
+      {/* overlay tap se close */}
+      <TouchableWithoutFeedback onPress={onClose}>
+        <View style={modalStyles.overlay}>
+          {/* container ko stopPropagation */}
+          <TouchableWithoutFeedback>
+            <View style={modalStyles.container}>
+              <View style={modalStyles.header}>
+                <View style={{flex: 1, alignItems: 'center', marginLeft: 20}}>
+                  <CustomText
+                    label={'Create Account'}
+                    color={'black'}
+                    backgroundColor={'white'}
+                    fontSize={18}
+                  />
+                </View>
+
+                <ImageFast
+                  onPress={onClose}
+                  source={images.closeicon}
+                  style={{
+                    width: 24,
+                    height: 24,
+                  }}
+                />
+              </View>
+              <CustomHorizontalLine />
+
+              <FastImage
                 backgroundColor={'white'}
-                fontSize={18}
+                source={images.logomain}
+                style={{
+                  width: 140,
+                  height: 64,
+                  alignSelf: 'center',
+                  marginTop: 30,
+                }}
               />
+              <CustomText
+                label={'Welcome Back!'}
+                fontSize={24}
+                fontWeight={600}
+                color={'black'}
+                textAlign={'center'}
+                marginTop={20}
+              />
+              <View style={{paddingHorizontal: 20}}>
+                <CustomText
+                  label={
+                    'Sign in to book unforgettable experiences and manage your upcoming sessions.'
+                  }
+                  fontSize={16}
+                  fontWeight={400}
+                  color={'black'}
+                  textAlign={'center'}
+                  paddingHorizontal={20}
+                  lineHeight={24}
+                  letterSpacing={-0.3}
+                  marginTop={8}
+                />
+              </View>
+
+              <View style={modalStyles.buttons}>
+                <CustomButton
+                  title={'Continue with Apple'}
+                  icon={images.ilogo}
+                  icnWidth={24}
+                  icnHeight={24}
+                  borderRadius={16}
+                  color={'black'}
+                  backgroundColor={'white'}
+                  borderWidth={1}
+                  borderColor={'#E1E4EA'}
+                  fontSize={18}
+                  fontWeight={600}
+                  letterSpacing={-0.3}
+                />
+                <CustomButton
+                  title={'Continue with Google'}
+                  icon={images.glogo}
+                  icnWidth={24}
+                  icnHeight={24}
+                  borderRadius={16}
+                  color={'black'}
+                  backgroundColor={'white'}
+                  borderWidth={1}
+                  borderColor={'#E1E4EA'}
+                  fontSize={18}
+                  fontWeight={600}
+                  letterSpacing={-0.3}
+                />
+                <CustomButton
+                  title={'Continue with Phone'}
+                  icon={images.mobileicon}
+                  icnWidth={24}
+                  icnHeight={24}
+                  borderRadius={16}
+                  color={'black'}
+                  backgroundColor={'white'}
+                  borderWidth={1}
+                  borderColor={'#E1E4EA'}
+                  fontSize={18}
+                  fontWeight={600}
+                  letterSpacing={-0.3}
+                />
+                <CustomButton
+                  title={'Continue with Email'}
+                  icon={images.mlogo}
+                  icnWidth={24}
+                  icnHeight={24}
+                  borderRadius={16}
+                  color={'white'}
+                  backgroundColor={'black'}
+                  borderWidth={1}
+                  borderColor={'#E1E4EA'}
+                  fontSize={18}
+                  fontWeight={600}
+                  letterSpacing={-0.3}
+                  onPress={() => {
+                    [navigation.navigate('EmailLogin'), onClose()];
+                  }}
+                />
+              </View>
+
+              <View style={modalStyles.lineContainer}>
+                <View style={modalStyles.line}></View>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate('CreateAcc');
+                    onClose();
+                  }}>
+                  <CustomText
+                    label={"Don’t Have an account?"}
+                    fontSize={14}
+                    fontWeight={400}
+                    color={'black'}
+                    textAlign={'center'}
+                    letterSpacing={-0.3}
+                  />
+                </TouchableOpacity>
+
+                <View style={modalStyles.line2}></View>
+              </View>
+              <View style={modalStyles.loginbtn}>
+                <CustomButton
+                  title={'Login'}
+                  borderRadius={16}
+                  color={'black'}
+                  backgroundColor={'white'}
+                  borderWidth={1}
+                  borderColor={'#E1E4EA'}
+                  fontSize={18}
+                  fontWeight={600}
+                  letterSpacing={-0.3}
+                  onPress={() => {
+                    [navigation.navigate('EmailLogin'), onClose()];
+                  }}
+                />
+                <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                  <CustomText
+                    label={'By continuing, you agree to our Terms & '}
+                    fontSize={14}
+                    fontWeight={400}
+                    color={'black'}
+                    textAlign={'center'}
+                    marginTop={18}
+                    letterSpacing={-0.3}
+                  />
+                  <CustomText
+                    label={'Privacy Policy'}
+                    fontSize={14}
+                    fontWeight={400}
+                    color={'#FF2557'}
+                    textAlign={'center'}
+                    marginTop={18}
+                    letterSpacing={-0.3}
+                    onPress={() => navigation.navigate('PrivacyPolicy')}
+                  />
+                </View>
+              </View>
             </View>
-
-            <ImageFast
-              onPress={onClose}
-              source={images.closeicon}
-              style={{
-                width: 24,
-                height: 24,
-              }}
-            />
-          </View>
-          <CustomHorizontalLine />
-
-          <FastImage
-            backgroundColor={'white'}
-            source={images.logomain}
-            style={{
-              width: 140,
-              height: 64,
-              alignSelf: 'center',
-              marginTop: 30,
-            }}
-          />
-          <CustomText
-            label={'Welcome Back!'}
-            fontSize={24}
-            fontWeight={600}
-            color={'black'}
-            textAlign={'center'}
-            marginTop={20}
-          />
-          <View style={{ paddingHorizontal: 20 }}>
-            <CustomText
-              label={
-                'Sign in to book unforgettable experiences and manage your upcoming sessions.'
-              }
-              fontSize={16}
-              fontWeight={400}
-              color={'black'}
-              textAlign={'center'}
-              paddingHorizontal={20}
-              lineHeight={24}
-              letterSpacing={-0.3}
-              marginTop={8}
-            />
-          </View>
-
-          <View style={modalStyles.buttons}>
-            <CustomButton
-              title={'Continue with Apple'}
-              icon={images.ilogo}
-              icnWidth={24}
-              icnHeight={24}
-              borderRadius={16}
-              color={'black'}
-              backgroundColor={'white'}
-              borderWidth={1}
-              borderColor={'#E1E4EA'}
-              fontSize={18}
-              fontWeight={600}
-              letterSpacing={-0.3}
-            />
-            <CustomButton
-              title={'Continue with Google'}
-              icon={images.glogo}
-              icnWidth={24}
-              icnHeight={24}
-              borderRadius={16}
-              color={'black'}
-              backgroundColor={'white'}
-              borderWidth={1}
-              borderColor={'#E1E4EA'}
-              fontSize={18}
-              fontWeight={600}
-              letterSpacing={-0.3}
-            />
-            <CustomButton
-              title={'Continue with Phone'}
-              icon={images.mobileicon}
-              icnWidth={24}
-              icnHeight={24}
-              borderRadius={16}
-              color={'black'}
-              backgroundColor={'white'}
-              borderWidth={1}
-              borderColor={'#E1E4EA'}
-              fontSize={18}
-              fontWeight={600}
-              letterSpacing={-0.3}
-            />
-            <CustomButton
-              title={'Continue with Email'}
-              icon={images.mlogo}
-              icnWidth={24}
-              icnHeight={24}
-              borderRadius={16}
-              color={'white'}
-              backgroundColor={'black'}
-              borderWidth={1}
-              borderColor={'#E1E4EA'}
-              fontSize={18}
-              fontWeight={600}
-              letterSpacing={-0.3}
-              onPress={() => {
-                [navigation.navigate('EmailLogin'), onClose()];
-              }}
-            />
-          </View>
-
-          <View style={modalStyles.lineContainer}>
-            <View style={modalStyles.line}></View>
-            <TouchableOpacity
-  onPress={() => {
-    navigation.navigate('CreateAcc');
-    onClose();
-  }}
->
-  <CustomText
-    label={'Don’t Have an account?'}
-    fontSize={14}
-    fontWeight={400}
-    color={'black'}
-    textAlign={'center'}
-    letterSpacing={-0.3}
-  />
-</TouchableOpacity>
-
-            <View style={modalStyles.line2}></View>
-          </View>
-          <View style={modalStyles.loginbtn}>
-            <CustomButton
-              title={'Login'}
-              borderRadius={16}
-              color={'black'}
-              backgroundColor={'white'}
-              borderWidth={1}
-              borderColor={'#E1E4EA'}
-              fontSize={18}
-              fontWeight={600}
-              letterSpacing={-0.3}
-              onPress={()=>{
-                [navigation.navigate('EmailLogin'), onClose()];
-              }}
-            />
-            <CustomText
-              label={'By continuing, you agree to our Terms &  Privacy Policy'}
-              fontSize={14}
-              fontWeight={400}
-              color={'black'}
-              textAlign={'center'}
-              marginTop={18}
-              letterSpacing={-0.3}
-            />
-          </View>
+          </TouchableWithoutFeedback>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     </Modal>
   );
 };
@@ -203,8 +222,7 @@ export const modalStyles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingBottom: 20,
-    // maxHeight: '88%',
-    height: '88%',
+    height: '86%',
   },
   header: {
     flexDirection: 'row',

@@ -11,12 +11,10 @@ import {
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import ScreenWrapper from '../../../components/ScreenWrapper';
-
 import ImageFast from '../../../components/ImageFast';
 import { images } from '../../../assets/Index';
 import CustomText from '../../../components/CustomText';
 import CustomButton from '../../../components/CustomButton';
-
 
 const LocationAccess = () => {
   const navigation = useNavigation();
@@ -34,7 +32,13 @@ const LocationAccess = () => {
       />
       <ImageFast
         source={images.locationicon}
-        style={{ width: 96, height: 96, position: 'absolute', top: 350, alignSelf: 'center' }}
+        style={{
+          width: 96,
+          height: 96,
+          position: 'absolute',
+          top: 340,
+          alignSelf: 'center',
+        }}
         resizeMode="contain"
       />
       <View style={styles.container}>
@@ -58,14 +62,13 @@ const LocationAccess = () => {
           marginTop={8}
           lineHeight={24}
         />
-         <CustomButton
+        <CustomButton
           title={'Grant Access to Location'}
           marginTop={30}
           borderRadius={16}
           color={'white'}
           borderWidth={1}
           borderColor={'#E1E4EA'}
-         
         />
       </View>
     </ScreenWrapper>
