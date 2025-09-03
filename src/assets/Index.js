@@ -26,8 +26,12 @@ export const images = {
   flag: require('./flag1.png'),
   locatiomimg: require('./location.png'),
   locationicon: require('./locaicon.png'),
+  readyacc: require('./ready.png'),
+  ricon: require('./racc1.png'),
+  coinicon: require('./Points.png'),
+  checkicon: require('./checkline.png'),
+  ricon2: require('./KeyIcons.png'),
 
 
  
 };
-

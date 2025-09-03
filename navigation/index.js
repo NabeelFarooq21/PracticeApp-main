@@ -10,6 +10,7 @@ import CreateAcc from '../src/screens/Auth/CreateAcc/Index';
 import PhoneNum from '../src/screens/Auth/PhoneNum/Index';
 import LocationAccess from '../src/screens/Auth/LocationAccess/Index';
 import VerifyNum from '../src/screens/Auth/VerifyNum/Index';
+import ReadyAcc from '../src/screens/Auth/ProfileSetup/ReadyAcc/Index';
 const Navigation = () => {
   return (
     <Stack.Navigator
@@ -28,6 +29,7 @@ const Navigation = () => {
       <Stack.Screen name='PhoneNum' component={PhoneNum}/>
       <Stack.Screen name='VerifyNum' component={VerifyNum}/>
       <Stack.Screen name='LocationAccess' component={LocationAccess}/>
+      <Stack.Screen name='ReadyAcc' component={ReadyAcc}/>
 
 
 
