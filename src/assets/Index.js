@@ -31,6 +31,8 @@ export const images = {
   coinicon: require('./Points.png'),
   checkicon: require('./checkline.png'),
   ricon2: require('./KeyIcons.png'),
+  ricon3: require('./rccw2.png'),
+  rcicon3: require('./rccww.png'),
 
 
  

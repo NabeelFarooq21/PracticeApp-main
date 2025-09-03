@@ -9,11 +9,12 @@ import CustomButton from '../../../../components/CustomButton';
 
 const ReadyAcc = () => {
   return (
-    <ScreenWrapper paddingHorizontal={0} backgroundColor={'white'}>
+    <ScreenWrapper paddingHorizontal={0} backgroundColor={'white'}
+    scrollEnabled={true}>
       <View style={styles.container}>
         <ImageFast
           source={images.readyacc}
-          style={{ width: 96, height: 96, alignSelf: 'center', marginTop: 96 }}
+          style={{ width: 96, height: 96, alignSelf: 'center', marginTop: 70 }}
           resizeMode="cover"
         />
         <CustomText
@@ -85,7 +86,7 @@ const ReadyAcc = () => {
           </View>
         </View>
         <View
-          style={{ height: 30, width: 1, backgroundColor: '#E1E4EA' }}
+          style={{ height: 18, width: 1, backgroundColor: '#E1E4EA' }}
         ></View>
 
         <View style={styles.box2}>
@@ -132,7 +133,139 @@ const ReadyAcc = () => {
               }}
             >
               <CustomText
-                label={'Complete'}
+                label={'Continue'}
+                fontFamily={600}
+                fontSize={14}
+                color={'#525866'}
+              />
+              <ImageFast
+                source={images.coinicon}
+                style={{ width: 16, height: 16 }}
+                resizeMode="cover"
+              />
+              <CustomText
+                label={'+50 Points'}
+                fontFamily={600}
+                fontSize={14}
+                color={'#FF2557'}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View
+          style={{ height: 18, width: 1, backgroundColor: '#E1E4EA' }}
+        ></View>
+        <View style={styles.box2}>
+          <View style={{ flexDirection: 'row', gap: 13 }}>
+            <View>
+              <ImageFast
+                source={images.ricon3}
+                style={{ width: 44, height: 44 }}
+                resizeMode="cover"
+              />
+            </View>
+            <View style={{ flexDirection: 'column' }}>
+              <CustomText
+                label={'Choose an Avatar'}
+                fontFamily={600}
+                fontSize={16}
+                color={'#0E121B'}
+              />
+              <View>
+                <CustomText
+                  label={'Pick a character that represents you.'}
+                  fontFamily={400}
+                  fontSize={14}
+                  color={'#525866'}
+                  marginTop={4}
+                />
+              </View>
+            </View>
+          </View>
+          <View style={{ flexDirection: 'row', gap: 6 }}>
+            <TouchableOpacity
+              style={{
+                width: '310',
+                height: 33,
+                backgroundColor: 'white',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 8,
+                borderWidth: 1,
+                padding: 6,
+                borderColor: '#E1E4EA',
+                flexDirection: 'row',
+                gap: 6,
+              }}
+            >
+              <CustomText
+                label={'Continue'}
+                fontFamily={600}
+                fontSize={14}
+                color={'#525866'}
+              />
+              <ImageFast
+                source={images.coinicon}
+                style={{ width: 16, height: 16 }}
+                resizeMode="cover"
+              />
+              <CustomText
+                label={'+50 Points'}
+                fontFamily={600}
+                fontSize={14}
+                color={'#FF2557'}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View
+          style={{ height: 18, width: 1, backgroundColor: '#E1E4EA' }}
+        ></View>
+        <View style={styles.box2}>
+          <View style={{ flexDirection: 'row', gap: 13 }}>
+            <View>
+              <ImageFast
+                source={images.rcicon3}
+                style={{ width: 44, height: 44 }}
+                resizeMode="cover"
+              />
+            </View>
+            <View style={{ flexDirection: 'column' }}>
+              <CustomText
+                label={'Choose an Avatar'}
+                fontFamily={600}
+                fontSize={16}
+                color={'#0E121B'}
+              />
+              <View>
+                <CustomText
+                  label={'Pick a character that represents you.'}
+                  fontFamily={400}
+                  fontSize={14}
+                  color={'#525866'}
+                  marginTop={4}
+                />
+              </View>
+            </View>
+          </View>
+          <View style={{ flexDirection: 'row', gap: 6 }}>
+            <TouchableOpacity
+              style={{
+                width: '310',
+                height: 33,
+                backgroundColor: 'white',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 8,
+                borderWidth: 1,
+                padding: 6,
+                borderColor: '#E1E4EA',
+                flexDirection: 'row',
+                gap: 6,
+              }}
+            >
+              <CustomText
+                label={'Continue'}
                 fontFamily={600}
                 fontSize={14}
                 color={'#525866'}
@@ -168,7 +301,7 @@ const styles = StyleSheet.create({
   },
 
   box1: {
-    marginTop: 40,
+    marginTop: 25,
     alignItems: 'center',
     flexDirection: 'row',
     gap: 13,
@@ -177,7 +310,7 @@ const styles = StyleSheet.create({
     borderColor: '#FF2557',
     borderWidth: 1,
     borderRadius: 16,
-    paddingVertical: 18,
+    paddingVertical: 16,
   },
   box2: {
     alignItems: 'center',
