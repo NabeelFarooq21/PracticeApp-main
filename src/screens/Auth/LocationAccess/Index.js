@@ -70,6 +70,7 @@ const LocationAccess = () => {
           borderWidth={1}
           borderColor={'#E1E4EA'}
           onPress={() => navigation.navigate('ReadyAcc')}
+          
         />
       </View>
     </ScreenWrapper>

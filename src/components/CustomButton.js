@@ -1,6 +1,5 @@
-import { TouchableOpacity, ActivityIndicator, Animated,Image} from "react-native";
+import { TouchableOpacity, ActivityIndicator, Animated, Image } from "react-native";
 import React, { useState } from "react";
-
 import CustomText from "./CustomText";
 
 const CustomButton = ({
@@ -32,8 +31,10 @@ const CustomButton = ({
   icon,
   icnWidth,
   icnHeight,
- 
-  
+  extraText,          // 👈 optional 2nd text
+  extraTextColor,     // 👈 alag color
+  extraFontSize,      // 👈 alag size
+  extraFontFamily,    // 👈 alag font
 }) => {
   const [animation] = useState(new Animated.Value(1));
 
@@ -66,10 +67,8 @@ const CustomButton = ({
         style={[
           {
             backgroundColor: disabled
-              ? "#cccccc" // Disabled ka default grey
-              : backgroundColor
-              ? backgroundColor
-              : "#000000", // default black if not provided
+              ? "#cccccc"
+              : backgroundColor || "#000000",
             marginTop,
             marginBottom,
             width: "100%",
@@ -88,34 +87,56 @@ const CustomButton = ({
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
       >
+        {/* Loader */}
         {loading && (
           <ActivityIndicator
             size={loadingSize || 25}
-            color={indicatorColor ? indicatorColor : "#ffffff"} // default white indicator
+            color={indicatorColor || "#ffffff"}
           />
         )}
 
-        {icon && (
-          <Image
-            source={icon}
-            style={{
-              width: icnWidth || 20,
-              height: icnHeight || 20,
-              resizeMode: 'contain',
-              marginRight: 8,
-            }}
-          />
-        )}
+        {/* Content */}
         {!loading && (
-          <CustomText
-            textStyle={customText}
-            label={title}
-            color={color ? color : "#ffffff"} // Agar prop color di to wahi, warna white
-            fontFamily={fontFamily || "System"}
-            fontSize={fontSize || 15}
-            lineHeight={22}
-            marginTop={-2}
-          />
+          <>
+            {/* First Text */}
+            {title && (
+              <CustomText
+                textStyle={customText}
+                label={title}
+                color={color || "#ffffff"}
+                fontFamily={fontFamily || "System"}
+                fontSize={fontSize || 15}
+                lineHeight={22}
+                marginTop={-2}
+              />
+            )}
+
+            {/* Icon */}
+            {icon && (
+              <Image
+                source={icon}
+                style={{
+                  width: icnWidth || 20,
+                  height: icnHeight || 20,
+                  resizeMode: "contain",
+                  marginHorizontal: 6,
+                }}
+              />
+            )}
+
+            {/* Extra Text */}
+            {extraText && (
+              <CustomText
+                textStyle={customText}
+                label={extraText}
+                color={extraTextColor || color || "#ffffff"}
+                fontFamily={extraFontFamily || fontFamily || "System"}
+                fontSize={extraFontSize || fontSize || 15}
+                lineHeight={22}
+                marginTop={-2}
+              />
+            )}
+          </>
         )}
       </TouchableOpacity>
     </Animated.View>

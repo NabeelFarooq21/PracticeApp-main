@@ -8,6 +8,7 @@ import CustomText from '../../../../components/CustomText';
 import CustomButton from '../../../../components/CustomButton';
 
 const ReadyAcc = () => {
+  const navigation = useNavigation();
   return (
     <ScreenWrapper paddingHorizontal={0} backgroundColor={'white'}
     scrollEnabled={true}>
@@ -28,7 +29,7 @@ const ReadyAcc = () => {
         <CustomText
           alignSelf="center"
           label={
-            'Let’s completes your profile to unlock all features and start earning Social Score.'
+            'Let’s complete your profile to unlock all features and start earning Social Score.'
           }
           fontFamily={400}
           fontSize={16}
@@ -131,6 +132,7 @@ const ReadyAcc = () => {
                 flexDirection: 'row',
                 gap: 6,
               }}
+              onPress={() => navigation.navigate('PersonalInformation')}
             >
               <CustomText
                 label={'Continue'}

@@ -33,6 +33,10 @@ export const images = {
   ricon2: require('./KeyIcons.png'),
   ricon3: require('./rccw2.png'),
   rcicon3: require('./rccww.png'),
+  usernameiicon: require('./username.png'),
+  infofilled: require('./infofill.png'),
+  dobicon: require('./dob.png'),
+  downicon: require('./downarrow.png'),
 
 
  
