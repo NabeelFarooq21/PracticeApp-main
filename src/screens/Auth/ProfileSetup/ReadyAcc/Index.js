@@ -28,7 +28,7 @@ const ReadyAcc = () => {
         <CustomText
           alignSelf="center"
           label={
-            'Let’s complete your profile to unlock all features and start earning Social Score.'
+            'Let’s completes your profile to unlock all features and start earning Social Score.'
           }
           fontFamily={400}
           fontSize={16}
