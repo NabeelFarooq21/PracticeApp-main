@@ -36,7 +36,7 @@ const PersonalInformation = () => {
         </View>
       )}
     >
-      <View>
+    
         <View>
           <ImageFast
             source={images.create}
@@ -229,22 +229,22 @@ const PersonalInformation = () => {
             }}
             onRightIconPress={() => setShowGenderOptions(true)}
           />
-        </View>
+        
       </View>
       <CustomHorizontalLine height={1} marginTop={15} />
-      <View style={{ paddingHorizontal: 20, marginTop: 10 }}>
+      <View style={{ paddingHorizontal: 20, marginTop: 15 , marginBottom: 30,justifyContent:'flex-end'}}>
           <CustomButton
             backgroundColor={'#0E121B'}
             title={'Complete and earn'}
             icon={images.coinicon}
-            extraText={'+50 Coins'} // 
+            extraText={'+50 Coins'} 
             extraTextColor={'#FFD700'} 
             icnWidth={20}
             icnHeight={20}
             borderRadius={12}
             color={'white'} 
             fontSize={16}
-            height={48}
+            height={56}
             onPress={() => navigation.navigate('ReadyAcc')}
           />
       </View>

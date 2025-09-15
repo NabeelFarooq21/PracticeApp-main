@@ -37,6 +37,7 @@ export const images = {
   infofilled: require('./infofill.png'),
   dobicon: require('./dob.png'),
   downicon: require('./downarrow.png'),
+  imgselect: require('./selectimg.png'),
 
 
  

@@ -199,6 +199,7 @@ const ReadyAcc = () => {
                 flexDirection: 'row',
                 gap: 6,
               }}
+              onPress={() => navigation.navigate('Avatar')}
             >
               <CustomText
                 label={'Continue'}
@@ -252,6 +253,7 @@ const ReadyAcc = () => {
           </View>
           <View style={{ flexDirection: 'row', gap: 6 }}>
             <TouchableOpacity
+              
               style={{
                 width: '310',
                 height: 33,
@@ -264,7 +266,9 @@ const ReadyAcc = () => {
                 borderColor: '#E1E4EA',
                 flexDirection: 'row',
                 gap: 6,
+                
               }}
+              
             >
               <CustomText
                 label={'Continue'}

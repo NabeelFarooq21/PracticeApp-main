@@ -12,6 +12,7 @@ import LocationAccess from '../src/screens/Auth/LocationAccess/Index';
 import VerifyNum from '../src/screens/Auth/VerifyNum/Index';
 import ReadyAcc from '../src/screens/Auth/ProfileSetup/ReadyAcc/Index';
 import PersonalInformation from '../src/screens/Auth/ProfileSetup/PersonalInformation/Index';
+import Avatar from '../src/screens/Auth/ProfileSetup/Avatar/Index';
 const Navigation = () => {
   return (
     <Stack.Navigator
@@ -32,6 +33,7 @@ const Navigation = () => {
       <Stack.Screen name='LocationAccess' component={LocationAccess}/>
       <Stack.Screen name='ReadyAcc' component={ReadyAcc}/>
       <Stack.Screen name='PersonalInformation' component={PersonalInformation}/>
+      <Stack.Screen name='Avatar' component={Avatar}/>
 
 
 
