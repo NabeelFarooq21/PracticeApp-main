@@ -9,12 +9,9 @@ import ImageFast from '../../../../components/ImageFast';
 const AllSet = () => {
   return (
     <ScreenWrapper
-      paddingHorizontal={0}
       scrollEnabled={false}
       backgroundColor={'white'}
     >
-      
-
         <View style={styles.overlay}>
             <ImageFast
               source={images.allsetgif}
@@ -76,7 +73,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 20,
   },
   buttonWrapper: {
     width: '100%',
