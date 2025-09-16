@@ -38,6 +38,8 @@ export const images = {
   dobicon: require('./dob.png'),
   downicon: require('./downarrow.png'),
   imgselect: require('./selectimg.png'),
+  allsetgif: require('./allset.gif'),
+  allseticon: require('./Allseticon.png'),
 
 
  

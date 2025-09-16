@@ -10,8 +10,11 @@ import CustomButton from '../../../../components/CustomButton';
 const ReadyAcc = () => {
   const navigation = useNavigation();
   return (
-    <ScreenWrapper paddingHorizontal={0} backgroundColor={'white'}
-    scrollEnabled={true}>
+    <ScreenWrapper
+      paddingHorizontal={0}
+      backgroundColor={'white'}
+      scrollEnabled={true}
+    >
       <View style={styles.container}>
         <ImageFast
           source={images.readyacc}
@@ -213,7 +216,7 @@ const ReadyAcc = () => {
                 resizeMode="cover"
               />
               <CustomText
-                label={'+50 Points'}
+                label={'+25 Points'}
                 fontFamily={600}
                 fontSize={14}
                 color={'#FF2557'}
@@ -235,14 +238,14 @@ const ReadyAcc = () => {
             </View>
             <View style={{ flexDirection: 'column' }}>
               <CustomText
-                label={'Choose an Avatar'}
+                label={'Phone Verification'}
                 fontFamily={600}
                 fontSize={16}
                 color={'#0E121B'}
               />
               <View>
                 <CustomText
-                  label={'Pick a character that represents you.'}
+                  label={'Build trust and unlock more features.'}
                   fontFamily={400}
                   fontSize={14}
                   color={'#525866'}
@@ -253,7 +256,6 @@ const ReadyAcc = () => {
           </View>
           <View style={{ flexDirection: 'row', gap: 6 }}>
             <TouchableOpacity
-              
               style={{
                 width: '310',
                 height: 33,
@@ -266,9 +268,8 @@ const ReadyAcc = () => {
                 borderColor: '#E1E4EA',
                 flexDirection: 'row',
                 gap: 6,
-                
               }}
-              
+              onPress={() => navigation.navigate('PhoneVerification')}
             >
               <CustomText
                 label={'Continue'}
@@ -282,7 +283,7 @@ const ReadyAcc = () => {
                 resizeMode="cover"
               />
               <CustomText
-                label={'+50 Points'}
+                label={'+25 Points'}
                 fontFamily={600}
                 fontSize={14}
                 color={'#FF2557'}

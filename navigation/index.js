@@ -13,6 +13,9 @@ import VerifyNum from '../src/screens/Auth/VerifyNum/Index';
 import ReadyAcc from '../src/screens/Auth/ProfileSetup/ReadyAcc/Index';
 import PersonalInformation from '../src/screens/Auth/ProfileSetup/PersonalInformation/Index';
 import Avatar from '../src/screens/Auth/ProfileSetup/Avatar/Index';
+import PhoneVerification from '../src/screens/Auth/ProfileSetup/PhoneVerification/Index';
+import Verification from '../src/screens/Auth/ProfileSetup/Verification/Index';
+import AllSet from '../src/screens/Auth/ProfileSetup/AllSet/Index';
 const Navigation = () => {
   return (
     <Stack.Navigator
@@ -23,21 +26,24 @@ const Navigation = () => {
     >
       <Stack.Screen name="Splash" component={Splash} />
       <Stack.Screen name="Onboarding" component={Onboarding} />
-      <Stack.Screen name="EmailLogin" component={EmailLogin}/>
-      <Stack.Screen name="ForgetPass" component={ForgetPass}/>
-      <Stack.Screen name='VerifyOtp' component={VerifyOtp}/>
-      <Stack.Screen name='ResetPass' component={ResetPass}/>
-      <Stack.Screen name='CreateAcc' component={CreateAcc}/>
-      <Stack.Screen name='PhoneNum' component={PhoneNum}/>
-      <Stack.Screen name='VerifyNum' component={VerifyNum}/>
-      <Stack.Screen name='LocationAccess' component={LocationAccess}/>
-      <Stack.Screen name='ReadyAcc' component={ReadyAcc}/>
-      <Stack.Screen name='PersonalInformation' component={PersonalInformation}/>
-      <Stack.Screen name='Avatar' component={Avatar}/>
+      <Stack.Screen name="EmailLogin" component={EmailLogin} />
+      <Stack.Screen name="ForgetPass" component={ForgetPass} />
+      <Stack.Screen name="VerifyOtp" component={VerifyOtp} />
+      <Stack.Screen name="ResetPass" component={ResetPass} />
+      <Stack.Screen name="CreateAcc" component={CreateAcc} />
+      <Stack.Screen name="PhoneNum" component={PhoneNum} />
+      <Stack.Screen name="VerifyNum" component={VerifyNum} />
+      <Stack.Screen name="LocationAccess" component={LocationAccess} />
+      <Stack.Screen name="ReadyAcc" component={ReadyAcc} />
+      <Stack.Screen
+        name="PersonalInformation"
+        component={PersonalInformation}
+      />
+      <Stack.Screen name="Avatar" component={Avatar} />
+      <Stack.Screen name="PhoneVerification" component={PhoneVerification} />
+      <Stack.Screen name="Verification" component={Verification} />
+      <Stack.Screen name="AllSet" component={AllSet} />
 
-
-
-      
     </Stack.Navigator>
   );
 };
