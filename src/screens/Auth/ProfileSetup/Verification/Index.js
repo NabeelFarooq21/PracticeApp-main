@@ -4,6 +4,8 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity,
+
+  Alert // Add Alert import
 } from 'react-native';
 import {
   CodeField,
@@ -11,7 +13,7 @@ import {
   useBlurOnFulfill,
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
-import React, { useState } from 'react';
+import React, { useState, } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import ScreenWrapper from '../../../../components/ScreenWrapper';
 import TopBar from '../../../../components/auth/TopBar';
@@ -20,6 +22,7 @@ import ImageFast from '../../../../components/ImageFast';
 import { images } from '../../../../assets/Index';
 import CustomText from '../../../../components/CustomText';
 import CustomButton from '../../../../components/CustomButton';
+import { storeData, StorageKeys } from '../../../../utils/storage'; // Add this import
 
 const CELL_COUNT = 6;
 
@@ -31,8 +34,25 @@ const VerifyOtp = () => {
     value,
     setValue,
   });
+const isOtpComplete = value.length === CELL_COUNT;
 
-  const isOtpComplete = value.length === CELL_COUNT;
+  const handleVerify = async () => {
+    if (!isOtpComplete) {
+      Alert.alert('Error', 'Please enter the complete verification code');
+      return;
+    }
+
+    try {
+      // Save that phone verification is complete
+      await storeData(StorageKeys.PHONE_VERIFIED, true);
+      
+      // Navigate back to Ready Account screen first
+      navigation.navigate('ReadyAcc');
+    } catch (error) {
+      Alert.alert('Error', 'Failed to complete verification');
+    }
+  };
+
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -145,7 +165,7 @@ const VerifyOtp = () => {
               fontWeight={600}
               marginTop={16}
               letterSpacing={-0.3}
-                onPress={() => navigation.navigate('AllSet')}
+              onPress={handleVerify} // Use the new function
               disabled={!isOtpComplete}
             />
           </View>

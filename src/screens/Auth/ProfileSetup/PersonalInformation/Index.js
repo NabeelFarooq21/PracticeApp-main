@@ -5,8 +5,9 @@ import {
   TouchableOpacity,
   FlatList,
   Modal,
+  Alert
 } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import ScreenWrapper from '../../../../components/ScreenWrapper';
 import ImageFast from '../../../../components/ImageFast';
@@ -16,15 +17,47 @@ import CustomButton from '../../../../components/CustomButton';
 import TopBar from '../../../../components/auth/TopBar';
 import CustomHorizontalLine from '../../../../components/CustomHorizontalLine';
 import CustomInput from '../../../../components/CustomInput';
-import { useState } from 'react';
+import { storeData, StorageKeys } from '../../../../utils/storage'; // Add this import
 
 const PersonalInformation = () => {
   const [gender, setGender] = useState('Male'); // default Male
   const [showGenderOptions, setShowGenderOptions] = useState(false);
-    const navigation = useNavigation();
+  const [fullName, setFullName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [username, setUsername] = useState('');
+  const [dob, setDob] = useState('');
+  const navigation = useNavigation();
+  
   const genderOptions = ['Male', 'Female', 'Other'];
+
+  const handleComplete = async () => {
+    // Validate inputs
+    if (!fullName || !lastName || !username || !dob) {
+      Alert.alert('Error', 'Please fill all fields');
+      return;
+    }
+
+    // Save personal info
+    const personalInfo = {
+      fullName,
+      lastName,
+      username,
+      dob,
+      gender
+    };
+
+    try {
+      await storeData(StorageKeys.PERSONAL_INFO, personalInfo);
+      await storeData(StorageKeys.PROFILE_COMPLETE, true);
+      
+      // Navigate back to ReadyAcc
+      navigation.navigate('ReadyAcc');
+    } catch (error) {
+      Alert.alert('Error', 'Failed to save information');
+    }
+  };
+
   return (
-    
     <ScreenWrapper
       paddingHorizontal={0}
       backgroundColor={'#ffffff'}
@@ -81,7 +114,6 @@ const PersonalInformation = () => {
             fontWeight={400}
             color={'#0E121B'}
             letterSpacing={-0.6}
-            // marginTop={20}
             label={'Full Name'}
             marginTop={10}
           />
@@ -101,13 +133,14 @@ const PersonalInformation = () => {
               tintColor: 'black',
               marginRight: 8,
             }}
+            value={fullName}
+            onChangeText={setFullName}
           />
           <CustomText
             fontSize={14}
             fontWeight={400}
             color={'#0E121B'}
             letterSpacing={-0.6}
-            // marginTop={20}
             label={'Last Name '}
             marginTop={10}
           />
@@ -127,6 +160,8 @@ const PersonalInformation = () => {
               tintColor: 'black',
               marginRight: 8,
             }}
+            value={lastName}
+            onChangeText={setLastName}
           />
 
           <CustomText
@@ -134,7 +169,6 @@ const PersonalInformation = () => {
             fontWeight={400}
             color={'#0E121B'}
             letterSpacing={-0.6}
-            // marginTop={20}
             label={'Username'}
             marginTop={10}
           />
@@ -154,6 +188,8 @@ const PersonalInformation = () => {
               tintColor: 'black',
               marginRight: 8,
             }}
+            value={username}
+            onChangeText={setUsername}
           />
           <View style={{ marginTop: 10, flexDirection: 'row' }}>
             <ImageFast
@@ -181,7 +217,6 @@ const PersonalInformation = () => {
             fontWeight={400}
             color={'#0E121B'}
             letterSpacing={-0.6}
-            // marginTop={20}
             label={'Date of Birth'}
             marginTop={10}
           />
@@ -201,13 +236,14 @@ const PersonalInformation = () => {
               tintColor: 'black',
               marginRight: 8,
             }}
+            value={dob}
+            onChangeText={setDob}
           />
           <CustomText
             fontSize={14}
             fontWeight={400}
             color={'#0E121B'}
             letterSpacing={-0.6}
-            // marginTop={20}
             label={'Gender'}
             marginTop={10}
           />
@@ -245,7 +281,7 @@ const PersonalInformation = () => {
             color={'white'} 
             fontSize={16}
             height={56}
-            onPress={() => navigation.navigate('ReadyAcc')}
+            onPress={handleComplete}
           />
       </View>
       <Modal
@@ -271,7 +307,7 @@ const PersonalInformation = () => {
         borderRadius: 12,
         padding: 15,
       }}
-      onPress={() => {}} // 👈 andar click karne par close na ho
+      onPress={() => {}}
     >
       <FlatList
         data={genderOptions}
@@ -297,5 +333,3 @@ const PersonalInformation = () => {
 };
 
 export default PersonalInformation;
-
-const styles = StyleSheet.create({});

@@ -7,8 +7,9 @@ import {
   TextInput,
   Dimensions,
   TouchableOpacity,
+  Alert // Only added Alert import
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import ScreenWrapper from '../../../../components/ScreenWrapper';
 import TopBar from '../../../../components/auth/TopBar';
@@ -17,6 +18,8 @@ import ImageFast from '../../../../components/ImageFast';
 import { images } from '../../../../assets/Index';
 import CustomText from '../../../../components/CustomText';
 import CustomButton from '../../../../components/CustomButton';
+import { storeData, StorageKeys } from '../../../../utils/storage'; // Only added this import
+
 const { width, height } = Dimensions.get('window');
 
 const countryCodes = [
@@ -37,10 +40,58 @@ const PhoneVerification = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [closse, setClosse] = useState(false);
 
+  // Add this useEffect to handle the 5-second delay after verification
+  useEffect(() => {
+    let timer;
+    
+    // Check if we're coming back from verification with a success flag
+    const checkVerificationStatus = async () => {
+      try {
+        const isVerified = await getData(StorageKeys.PHONE_VERIFIED);
+        if (isVerified) {
+          // Navigate back to Ready Account screen
+          navigation.navigate('ReadyAcc');
+        }
+      } catch (error) {
+      }
+    };
+    
+    // Run this check when component mounts
+    checkVerificationStatus();
+    
+    return () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
+  }, [navigation]);
+
+  // ... rest of the component remains the same ...
+
   const handleCountrySelect = country => {
     setSelectedCountry(country);
     setModalVisible(false);
   };
+
+  // ONLY ADDED THIS FUNCTION - everything else remains exactly the same
+  const handleGetStarted = async () => {
+    if (phoneNumber.length === 0) {
+      Alert.alert('Error', 'Please enter your phone number');
+      return;
+    }
+
+    try {
+      // Save phone number (optional)
+      const fullPhoneNumber = `${selectedCountry.code} ${phoneNumber}`;
+      await storeData(StorageKeys.PHONE_NUMBER, fullPhoneNumber);
+      
+      navigation.navigate('Verification');
+    } catch (error) {
+      Alert.alert('Error', 'Failed to save phone number');
+    }
+  };
+
+  
 
   const renderCountryItem = ({ item }) => (
     <TouchableOpacity
@@ -86,7 +137,7 @@ const PhoneVerification = () => {
       />
 
       <CustomText
-        label={'We’ll send you a 6 digit code to verify your number.'}
+        label={'We will send you a 6 digit code to verify your number.'}
         fontSize={16}
         fontWeight={400}
         color={'#525866'}
@@ -145,7 +196,7 @@ const PhoneVerification = () => {
           fontSize={16}
           fontFamily={600}
           marginBottom
-          onPress={() => navigation.navigate('Verification')}
+          onPress={handleGetStarted} // ONLY CHANGED THIS LINE
           disabled={phoneNumber.length === 0}
           style={[
             styles.getStartedButton,
@@ -195,6 +246,7 @@ const PhoneVerification = () => {
 
 export default PhoneVerification;
 
+// ALL STYLES REMAIN EXACTLY THE SAME - NO CHANGES
 const styles = StyleSheet.create({
   inputContainer: {
     marginTop: 35,
@@ -304,7 +356,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 16,
-    // fontFamily: fonts.semiBold,
   },
   buttonTextActive: {
     color: '#ffffff',

@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import TopBar from '../../../components/auth/TopBar';
@@ -109,7 +115,7 @@ const EmailLogin = () => {
             label={'Password'}
           />
 
-          <CustomButton
+          {/* <CustomButton
             title={'Forgot Password?'}
             backgroundColor={'white'}
             color={'#525866'}
@@ -119,7 +125,22 @@ const EmailLogin = () => {
             fontWeight={400}
             letterSpacing={-0.6}
             onPress={() => navigation.navigate('ForgetPass')}
+          /> */}
+          <TouchableOpacity
+          onPress={() => navigation.navigate('ForgetPass')}>
+            
+           
+            <CustomText
+            fontSize={12}
+            fontWeight={400}
+            color={'#0E121B'}
+            // letterSpacing={-0.6}
+            lineHeight={16}
+            
+            // marginTop={20}
+            label={' Forgot Password'}
           />
+          </TouchableOpacity>
         </View>
         <CustomInput
           placeholder={'Password'}
@@ -153,7 +174,6 @@ const EmailLogin = () => {
           marginTop={12}
           letterSpacing={-0.3}
           onPress={() => navigation.navigate('LocationAccess')}
-         
         />
         <View style={styles.lineContainer}>
           <View style={styles.line}></View>
@@ -202,20 +222,19 @@ const EmailLogin = () => {
           <View style={styles.line}></View>
 
           <TouchableOpacity
-  onPress={() => {
-    navigation.navigate('CreateAcc');
-    
-  }}
->
-  <CustomText
-    label={'Don’t Have an account?'}
-    fontSize={14}
-    fontWeight={400}
-    color={'black'}
-    textAlign={'center'}
-    letterSpacing={-0.3}
-  />
-</TouchableOpacity>
+            onPress={() => {
+              navigation.navigate('CreateAcc');
+            }}
+          >
+            <CustomText
+              label={'Don’t Have an account?'}
+              fontSize={14}
+              fontWeight={400}
+              color={'black'}
+              textAlign={'center'}
+              letterSpacing={-0.3}
+            />
+          </TouchableOpacity>
 
           <View style={styles.line2}></View>
         </View>
@@ -231,7 +250,7 @@ const EmailLogin = () => {
           fontWeight={600}
           letterSpacing={-0.3}
           marginTop={16}
-           onPress={()=>navigation.navigate('CreateAcc')}
+          onPress={() => navigation.navigate('CreateAcc')}
         />
       </View>
     </ScreenWrapper>

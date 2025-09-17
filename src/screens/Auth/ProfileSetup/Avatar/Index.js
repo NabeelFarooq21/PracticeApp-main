@@ -9,6 +9,7 @@ import { images } from '../../../../assets/Index';
 import CustomText from '../../../../components/CustomText';
 import CustomButton from '../../../../components/CustomButton';
 import { launchImageLibrary } from 'react-native-image-picker';
+import { storeData, StorageKeys } from '../../../../utils/storage'; // Add this import
 
 const Avatar = () => {
   const navigation = useNavigation();
@@ -36,9 +37,19 @@ const Avatar = () => {
     navigation.navigate('ReadyAcc');
   };
 
-  const handleComplete = () => {
+  const handleComplete = async () => { // Make this async
     if (selectedImage) {
-      navigation.navigate('ReadyAcc');
+      try {
+        // Save that avatar selection is complete
+        await storeData(StorageKeys.AVATAR_COMPLETE, true);
+        
+        // You can also save the image URI if you want to use it later
+        // await storeData(StorageKeys.AVATAR_IMAGE, selectedImage.uri);
+        
+        navigation.navigate('ReadyAcc');
+      } catch (error) {
+        Alert.alert('Error', 'Failed to save avatar selection');
+      }
     } else {
       Alert.alert('Select Avatar', 'Please choose an avatar or skip for later');
     }
