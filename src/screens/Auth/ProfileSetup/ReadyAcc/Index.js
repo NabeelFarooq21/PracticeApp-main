@@ -32,7 +32,7 @@ const ReadyAcc = () => {
     if (profileComplete && avatarComplete && phoneVerified) {
       timer = setTimeout(() => {
         navigation.navigate('AllSet');
-      }, 5000); // 5 seconds delay
+      }, 2000); // 5 seconds delay
     }
     
     // Clean up the timer when component unmounts or dependencies change

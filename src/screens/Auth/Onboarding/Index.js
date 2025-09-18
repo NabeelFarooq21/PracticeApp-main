@@ -9,7 +9,7 @@ import CreateModel from '../../../components/model/CreateModel';
 import LoginModel from '../../../components/model/LoginModel';
 import { useNavigation } from '@react-navigation/native';
 
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 const Onboarding = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -93,18 +93,18 @@ const Onboarding = () => {
             <View style={styles.container}>
               <CustomText
                 label={item.title}
-                fontSize={24}
+                fontSize={height > 800 ? 24 : 20}
                 fontWeight={600}
                 color={'black'}
                 textAlign={'center'}
               />
               <CustomText
                 label={item.description}
-                fontSize={16}
+                fontSize={height > 800 ? 16 : 14}
                 fontWeight={400}
                 color={'black'}
                 textAlign={'center'}
-                lineHeight={24}
+                lineHeight={height > 800 ? 24 : 20}
                 marginTop={5}
               />
             </View>
@@ -162,27 +162,28 @@ export default Onboarding;
 
 const styles = StyleSheet.create({
   mainImage: {
-    width: 300,
-    height: 600,
-    marginTop: 96,
+    width: width * 0.81, // Use percentage of screen width
+    height: height * 0.78, // Use percentage of screen height
+    marginTop: height * 0.1, // Use percentage of screen height
     alignSelf: 'center',
+    justifyContent: 'center',
   },
   overlay: {
     width: '100%',
-    height: 458,
+    height: height * 0.62, 
     position: 'absolute',
-    top: 385,
+    top: height * 0.42, // Position based on screen height
   },
   container: {
     position: 'absolute',
-    top: 550,
+    top: height * 0.65, // Position based on screen height
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
     paddingHorizontal: 20,
   },
   indexBar: {
-    width: 35,
+    width: width * 0.08, // Use percentage of screen width
     height: 6,
     marginHorizontal: 3,
     borderRadius: 16,
@@ -190,10 +191,10 @@ const styles = StyleSheet.create({
   indexBarContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    // marginTop: 20,
+    marginTop: height * 0.02, // Add some margin based on screen height
   },
   btns: {
     paddingHorizontal: 20,
-    marginBottom: 45,
+    marginBottom: height > 800 ? 45 : 25, // Adjust based on screen height
   },
 });

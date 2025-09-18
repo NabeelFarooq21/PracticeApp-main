@@ -5,8 +5,10 @@ import CustomButton from '../../../../components/CustomButton';
 import CustomText from '../../../../components/CustomText';
 import { images } from '../../../../assets/Index';
 import ImageFast from '../../../../components/ImageFast';
+import { useNavigation } from '@react-navigation/native';
 
 const AllSet = () => {
+  const navigation = useNavigation();
   return (
     <ScreenWrapper
       scrollEnabled={false}
@@ -53,6 +55,7 @@ const AllSet = () => {
               fontFamily={600}
               paddingHorizontal={20}
               height={56}
+              onPress={() => navigation.navigate('Home')}
             />
           </View>
         </View>
