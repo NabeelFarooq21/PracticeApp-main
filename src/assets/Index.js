@@ -40,6 +40,9 @@ export const images = {
   imgselect: require('./selectimg.png'),
   allsetgif: require('./allset.gif'),
   allseticon: require('./Allseticon.png'),
+  headerheart: require('./hearticon.png'),
+  headerchat: require('./chaticon.png'),
+  headerlogo: require('./headerlogo.png'),
 
 
  
