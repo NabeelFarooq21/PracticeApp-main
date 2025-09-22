@@ -10,13 +10,9 @@ import {
 import React from 'react';
 import { images } from '../../assets/Index';
 import ImageFast from '../../components/ImageFast';
-
-// Get device dimensions
 const { width, height } = Dimensions.get('window');
-
-// Responsive sizing function
 const responsiveSize = size => {
-  const scale = width / 375; // 375 is typical iPhone width
+  const scale = width / 375;
   return Math.round(size * scale);
 };
 
@@ -57,9 +53,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: responsiveSize(5),
-    marginTop:
-      Platform.OS === 'ios' ? responsiveSize(20) : StatusBar.currentHeight,
+marginTop: Platform.OS === 'ios' ? 40 : (StatusBar.currentHeight || 40),
+
     width: '100%',
+    paddingHorizontal: responsiveSize(20),
+    
   },
   logoContainer: {
     flex: 1,

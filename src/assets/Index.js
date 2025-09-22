@@ -43,7 +43,17 @@ export const images = {
   headerheart: require('./hearticon.png'),
   headerchat: require('./chaticon.png'),
   headerlogo: require('./headerlogo.png'),
-
-
- 
+  stroyimg1: require('./profileimg1.png'),
+  storyimg2: require('./profileimg2.png'),
+  storyimg3: require('./profileimg3.png'),
+  storyimg4: require('./profileimg4.png'),
+  storyimg5: require('./profileimg5.png'),
+  storyimg6: require('./profileimg6.png'),
+  storyimg7: require('./profileimg7.png'),
+  storyimg8: require('./profileimg8.png'),
+  storyimg9: require('./profileimg9.png'),
+  textframe: require('./textimg.png'),
+  dummyimg: require('./profileimg0.png'),
+  downdoublearrow: require('./downarrowimg.png'),
+  
 };
