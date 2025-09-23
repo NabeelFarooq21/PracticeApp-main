@@ -55,5 +55,14 @@ export const images = {
   textframe: require('./textimg.png'),
   dummyimg: require('./profileimg0.png'),
   downdoublearrow: require('./downarrowimg.png'),
+  locaidedblackicon: require('./blackicon.png'),
+  goldpoint: require('./Gold.png'),
+  media1: require('./Media.png'),
+  posticon1: require('./posticon1.png'),
+  posticon2: require('./posticon2.png'),
+  posticon3: require('./posticon3.png'),
+  posticon4: require('./posticon4.png'),
+  posticon5: require('./posticon5.png'),
+ 
   
 };

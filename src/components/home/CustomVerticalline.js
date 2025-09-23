@@ -21,7 +21,7 @@ const CustomVerticalLine = ({
           borderColor,
           borderWidth,
         },
-        style, // extra style agar pass karna ho
+        style,
       ]}
     />
   );

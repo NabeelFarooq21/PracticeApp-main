@@ -52,12 +52,9 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: responsiveSize(5),
-marginTop: Platform.OS === 'ios' ? 40 : (StatusBar.currentHeight || 40),
-
+    marginTop: 40,
     width: '100%',
     paddingHorizontal: responsiveSize(20),
-    
   },
   logoContainer: {
     flex: 1,
@@ -70,7 +67,7 @@ marginTop: Platform.OS === 'ios' ? 40 : (StatusBar.currentHeight || 40),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    gap: responsiveSize(10),
+    gap: responsiveSize(15),
   },
 
   icon: {

@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-const CustomHorizontalLine = ({ height = 1, color = '#E5E7EB', marginTop, style }) => {
+const CustomHorizontalLine = ({ height = 1, color = '#E5E7EB', marginTop,marginBottom, style }) => {
   return (
     <View
       style={[
         styles.line,
-        { height, backgroundColor: color, marginTop:marginTop || 3 },
+        { height, marginBottom, backgroundColor: color, marginTop:marginTop || 3 },
         style,
       ]}
     />

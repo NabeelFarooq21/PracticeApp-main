@@ -75,11 +75,11 @@ export default DummyProfileStory;
 const styles = StyleSheet.create({
   container: {
     marginTop: 20,
-    paddingLeft: 15,
+    
   },
   storyContainer: {
     alignItems: 'center',
-    marginRight: 15,
+    paddingRight: 8,
   },
   storyImgWrapper: {
     width: 80,
@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
     width: 61,
     height: 18,
     marginTop: 8,
-   
     
     
   },

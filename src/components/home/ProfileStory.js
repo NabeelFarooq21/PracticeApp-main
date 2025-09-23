@@ -55,11 +55,11 @@ export default ProfileStory;
 const styles = StyleSheet.create({
   container: {
     marginTop: 20,
-    height: 120, // ✅ fix height di taake feed disturb na ho
+    height: 120, 
   },
   storyContainer: {
     alignItems: 'center',
-    paddingRight: 15,
+    paddingRight: 8,
   },
   storyImgWrapper: {
     width: 80,
