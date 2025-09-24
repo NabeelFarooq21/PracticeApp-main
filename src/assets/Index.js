@@ -63,6 +63,7 @@ export const images = {
   posticon3: require('./posticon3.png'),
   posticon4: require('./posticon4.png'),
   posticon5: require('./posticon5.png'),
- 
+  tigeravatar: require('./tigeravatar.png'),
+  leftarrow: require('./leftarrow.png'),
   
 };

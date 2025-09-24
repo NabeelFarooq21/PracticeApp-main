@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import ScreenWrapper from '../../../components/ScreenWrapper';
 import { images } from '../../../assets/Index';
@@ -9,6 +15,7 @@ import DummyProfileStory from '../../../components/home/DummyProfileStory';
 import CustomText from '../../../components/CustomText';
 import CustomVerticalline from '../../../components/home/CustomVerticalline';
 import CustomHorizontalLine from '../../../components/CustomHorizontalLine';
+import ActionBar from '../../../components/home/ActionBar';
 
 const FeedIntro = () => {
   return (
@@ -24,15 +31,6 @@ const FeedIntro = () => {
         </View>
 
         <View style={styles.text}>
-          {/* <CustomText
-            label={'How it works'}
-            fontFamily={600}
-            fontSize={25}
-            lineHeight={32}
-            color={'#0E121B'}
-            marginTop={24}
-            paddingHorizontal={20}
-          /> */}
           <Text style={styles.text1}>HOW IT WORKS</Text>
 
           <CustomText
@@ -99,7 +97,6 @@ const FeedIntro = () => {
                 marginLeft={3}
               />
             </View>
-
             <Text>
               <Text style={{ fontWeight: 'normal', lineHeight: 19 }}>
                 Discover the world around you like never before.
@@ -122,83 +119,77 @@ const FeedIntro = () => {
               }}
               resizeMode="cover"
             />
-            <View style={styles.actionBar}>
-              {/* Like */}
-              <View style={styles.actionItem}>
-                <ImageFast
-                  source={images.posticon1}
-                  style={styles.icon}
-                  resizeMode="contain"
-                />
-                <CustomText
-                  label={'120'}
-                  fontSize={12}
-                  color={'#525866'}
-                  marginLeft={4}
-                />
-              </View>
-
-              {/* Dislike */}
-              <View style={styles.actionItem}>
-                <ImageFast
-                  source={images.posticon2}
-                  style={styles.icon}
-                  resizeMode="contain"
-                />
-                <CustomText
-                  label={'10'}
-                  fontSize={12}
-                  color={'#525866'}
-                  marginLeft={4}
-                />
-              </View>
-
-              {/* Comment */}
-              <View style={styles.actionItem}>
-                <ImageFast
-                  source={images.posticon3}
-                  style={styles.icon}
-                  resizeMode="contain"
-                />
-                <CustomText
-                  label={'45'}
-                  fontSize={12}
-                  color={'#525866'}
-                  marginLeft={4}
-                />
-              </View>
-
-              {/* Share */}
-              <View style={styles.actionItem}>
-                <ImageFast
-                  source={images.posticon4}
-                  style={styles.icon}
-                  resizeMode="contain"
-                />
-                <CustomText
-                  label={'32'}
-                  fontSize={12}
-                  color={'#525866'}
-                  marginLeft={4}
-                />
-              </View>
-              <View style={styles.actionItem}>
-                <ImageFast
-                  source={images.posticon5}
-                  style={styles.icon}
-                  resizeMode="contain"
-                />
-                <CustomText
-                  label={'320'}
-                  fontSize={12}
-                  color={'#525866'}
-                  marginLeft={4}
-                />
-              </View>
-            </View>
-            
+            <ActionBar
+              items={[
+                { icon: images.posticon1, label: '120' },
+                { icon: images.posticon2, label: '10' },
+                { icon: images.posticon3, label: '45' },
+                { icon: images.posticon4, label: '32' },
+                { icon: images.posticon5, label: '320' },
+              ]}
+            />{' '}
           </View>
-          
+        </View>
+        <CustomHorizontalLine marginBottom={20} />
+        <View style={styles.post2}>
+          <ImageFast
+            style={{ width: 96, height: 96, resizeMode: 'cover' }}
+            source={images.tigeravatar}
+          />
+          <CustomText
+            label={'Max Schmidt'}
+            fontFamily={600}
+            fontSize={18}
+            lineHeight={19}
+            color={'#0E121B'}
+            letterSpacing={-0.6}
+          />
+          <View style={styles.socailscore}>
+            <CustomText
+              label={'Social Score:'}
+              fontFamily={400}
+              fontSize={16}
+              lineHeight={24}
+              color={'#525866'}
+            />
+            <TouchableOpacity
+              style={{
+                borderWidth: 1,
+                borderColor: '#E1E4EA',
+                paddingHorizontal: 6,
+                paddingVertical: 1,
+                borderRadius: 4,
+              }}
+            >
+              <Text>126.4 K</Text>
+            </TouchableOpacity>
+            <ImageFast
+              source={images.leftarrow}
+              style={{ width: 24, height: 24, resizeMode: 'contain' }}
+              resizeMode="contain"
+            />
+          </View>
+          <View style={styles.postbox}>
+            <CustomText
+              label={'Amplify your influence with Social Score!'}
+              fontFamily={600}
+              fontSize={19}
+              lineHeight={24}
+              color={'#0E121B'}
+              letterSpacing={-0.6}
+            />
+            <CustomText
+              label={
+                'Engage more and earn more points through posts, likes, and comments. Turn your activity into a trust score that opens new doors in your community.'
+              }
+              fontFamily={400}
+              fontSize={14}
+              lineHeight={24}
+              color={'#525866'}
+              marginTop={4}
+              textAlign={'center'}
+            />
+          </View>
         </View>
         <CustomHorizontalLine marginBottom={20} />
       </ScrollView>
@@ -241,7 +232,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
     marginBottom: 10,
-    // paddingHorizontal: 5,
   },
 
   actionItem: {
@@ -252,5 +242,34 @@ const styles = StyleSheet.create({
   icon: {
     width: 20,
     height: 20,
+  },
+  post2: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+    paddingHorizontal: 20,
+    flexDirection: 'column',
+
+    paddingBottom: 20,
+  },
+  socailscore: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 2,
+    marginTop: 6,
+  },
+  postbox: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 20,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: '#E1E4EA',
+    borderRadius: 16,
+    paddingVertical: 16,
+    width: '100%',
+    backgroundColor: '#F5F7FA',
+    marginBottom: 20,
   },
 });
