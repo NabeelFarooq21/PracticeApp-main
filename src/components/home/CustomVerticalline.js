@@ -5,7 +5,7 @@ const CustomVerticalLine = ({
   marginTop = 0,
   marginBottom = 0,
   height = 40,
-  width = 1,
+  width = 0,
   borderColor = '#E1E4EA',
   borderWidth = 1,
   style,

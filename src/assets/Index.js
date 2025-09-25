@@ -1,3 +1,5 @@
+import { use } from 'react';
+
 export const images = {
   logosplash: require('./Logo.png'),
   splash: require('./gradient-loader.png'),
@@ -65,5 +67,26 @@ export const images = {
   posticon5: require('./posticon5.png'),
   tigeravatar: require('./tigeravatar.png'),
   leftarrow: require('./leftarrow.png'),
+  userimg1: require('./userimg1.png'),
+  bluetick: require('./bluetick.png'),
+  mediaimg1: require('./mediaimg1.png'),
+  userimg2: require('./userimg2.png'),
+  mediaimg2: require('./mediaimg2.png'),
+  greenlike: require('./greenlike.png'),
+  userimg3: require('./userimg3.png'),
+  mediaimg3: require('./mediaimg3.png'),
+  reddislike: require('./reddislike.png'),
+  mediaimg4: require('./mediaimg4.png'),
+  userimg4: require('./userimg4.png'),
+  repostblue: require('./repostblue.png'),
+  userimg5: require('./userimg5.png'),
+  mediaimg5: require('./mediaimg5.png'),
+  mediaimg6: require('./mediaimg6.png'),
+  mediaimg7: require('./mediaimg7.png'),
+  userimg7: require('./userimg7.png'),
+  userimg8: require('./userimg8.png'),
+  mediaimg8: require('./mediaimg8.png'),
+  mediaimg9: require('./mediaimg9.png'),
+ 
   
 };

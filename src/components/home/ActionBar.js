@@ -1,12 +1,24 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
-import ImageFast from "../ImageFast";   // tumhara component
-import CustomText from "../CustomText"; // tumhara component
+import ImageFast from "../ImageFast";   
+import CustomText from "../CustomText"; 
 
 // reusable ActionItem
-const ActionItem = ({ icon, label }) => {
+const ActionItem = ({ icon, label, borderWidth = 0, borderColor = 'transparent', borderRadius = 0,  paddingVertical = 2, paddingHorizontal = 9 }) => {
   return (
-    <View style={styles.actionItem}>
+    <View
+      style={[
+        styles.actionItem,
+        {
+          borderWidth: borderWidth,
+          borderColor: borderColor,
+          borderRadius: borderRadius,
+          
+          paddingVertical,
+          paddingHorizontal,
+        },
+      ]}
+    >
       <ImageFast source={icon} style={styles.icon} resizeMode="contain" />
       <CustomText
         label={label}
@@ -18,12 +30,20 @@ const ActionItem = ({ icon, label }) => {
   );
 };
 
-// main ActionBar (ab props lega)
 const ActionBar = ({ items = [] }) => {
   return (
     <View style={styles.actionBar}>
       {items.map((item, index) => (
-        <ActionItem key={index} icon={item.icon} label={item.label} />
+        <ActionItem
+          key={index}
+          icon={item.icon}
+          label={item.label}
+          borderWidth={item.borderWidth}
+          borderColor={item.borderColor}
+          borderRadius={item.borderRadius}
+          paddingHorizontal={item.paddingHorizontal}
+          paddingVertical={item.paddingVertical}
+        />
       ))}
     </View>
   );

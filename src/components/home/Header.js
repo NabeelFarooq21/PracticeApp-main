@@ -52,9 +52,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 40,
+    marginTop: 20,
     width: '100%',
     paddingHorizontal: responsiveSize(20),
+    paddingVertical: responsiveSize(15),
   },
   logoContainer: {
     flex: 1,
