@@ -266,8 +266,6 @@ const FeedIntro = () => {
           <Header />
         </View>
       )}
-    
-     
     >
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ paddingHorizontal: 20 }}>
