@@ -1,10 +1,17 @@
-import { StyleSheet, View } from "react-native";
-import React from "react";
-import ImageFast from "../ImageFast";   
-import CustomText from "../CustomText"; 
+import { StyleSheet, View } from 'react-native';
+import React from 'react';
+import ImageFast from '../ImageFast';
+import CustomText from '../CustomText';
 
-// reusable ActionItem
-const ActionItem = ({ icon, label, borderWidth = 0, borderColor = 'transparent', borderRadius = 0,  paddingVertical = 2, paddingHorizontal = 9 }) => {
+const ActionItem = ({
+  icon,
+  label,
+  borderWidth = 0,
+  borderColor = 'transparent',
+  borderRadius = 0,
+  paddingVertical = 2,
+  paddingHorizontal = 9,
+}) => {
   return (
     <View
       style={[
@@ -13,7 +20,7 @@ const ActionItem = ({ icon, label, borderWidth = 0, borderColor = 'transparent',
           borderWidth: borderWidth,
           borderColor: borderColor,
           borderRadius: borderRadius,
-          
+
           paddingVertical,
           paddingHorizontal,
         },

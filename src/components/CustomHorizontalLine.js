@@ -6,7 +6,7 @@ const CustomHorizontalLine = ({ height = 1, color = '#E5E7EB', marginTop,marginB
     <View
       style={[
         styles.line,
-        { height, marginBottom, backgroundColor: color, marginTop:marginTop || 3 },
+        { height, marginBottom, backgroundColor: color, marginTop:marginTop || 0 },
         style,
       ]}
     />

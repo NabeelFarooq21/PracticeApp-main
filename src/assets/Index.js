@@ -87,6 +87,9 @@ export const images = {
   userimg8: require('./userimg8.png'),
   mediaimg8: require('./mediaimg8.png'),
   mediaimg9: require('./mediaimg9.png'),
- 
-  
+  bottombaricon1: require('./bottombaricon1.png'),
+  bottombaricon2: require('./bottombaricon2.png'),
+  bottombaricon3: require('./bottombaricon3.png'),
+  bottombaricon4: require('./bottombaricon4.png'),
+  bottombaricon5: require('./bottombaricon5.png'),
 };
